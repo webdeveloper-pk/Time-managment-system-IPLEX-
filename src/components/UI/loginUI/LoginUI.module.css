@@ -1,0 +1,113 @@
+.wrapper {
+  background-color: #354152;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  z-index: 1;
+}
+
+.wrapper .form_wrapper {
+  width: 350px;
+  height: 500px;
+  display: flex;
+  background-color: #354152;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  border-radius: 5px;
+}
+
+.icon {
+  color: #2b5d6e;
+  font-size: 26px;
+}
+
+.wrapper .form_wrapper h2 {
+  margin: 25px 0px 10px 0px;
+}
+
+.form_wrapper .inner_form_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.login_button {
+  background-image: linear-gradient(160deg, #4999b1 0%, #021a22 100%);
+  border: none;
+  border-radius: 20px;
+  padding: 10px 40px;
+  color: rgb(204, 188, 188);
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.login_button:hover {
+  font-weight: 700;
+  color: #ffffff;
+  box-shadow: 0 0 250px #000;
+}
+
+.inner_form_wrapper input {
+  background-color: transparent;
+  border: none;
+  border-radius: 20px;
+  padding: 7px 40px;
+  text-align: center;
+  border: 1px solid #242c37;
+  color: #7e8ba3;
+}
+
+.inner_form_wrapper input::placeholder {
+  font-size: 14px;
+  color: #56647e;
+}
+
+.inner_form_wrapper input:hover {
+  border: 1px solid #3a6e80;
+  box-shadow: 0 0 3px #3a6e80;
+  outline-offset: 0px;
+  outline: none;
+}
+
+.inner_form_wrapper input:focus {
+  border: 1px solid #3a6e80;
+  box-shadow: 0 0 3px #3a6e80;
+  outline-offset: 0px;
+  outline: none;
+}
+
+.inner_form_wrapper input:active {
+  border: none;
+  border: 1px solid #242c37;
+}
+
+.bottom_wrapper {
+  margin-top: 50px;
+}
+
+.bottom_wrapper span {
+  font-weight: 700;
+}
+
+.bottom_wrapper .link {
+  text-decoration: none;
+  color: #ffffff;
+  margin-left: 8px;
+}
+
+.error {
+  color: rgb(175, 57, 57);
+}
