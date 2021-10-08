@@ -8,6 +8,7 @@ import {
 import Login from "./pages/logIn";
 import SignUp from "./pages/signUp";
 import Home from "./pages/home";
+import Dashboard from "./pages/dashboard";
 import ErrorPage from "./pages/errorPage/ErrorPage";
 import "./App.css";
 
@@ -24,6 +25,7 @@ const App = () => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/" component={Home} />
+          <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/404" component={ErrorPage} />
           <Redirect from="*" to="/404" />
         </Switch>

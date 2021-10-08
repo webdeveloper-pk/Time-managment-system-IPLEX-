@@ -55,7 +55,6 @@
 }
 
 .login_button:hover {
-  font-weight: 700;
   color: #ffffff;
   box-shadow: 0 0 250px #000;
 }
