@@ -1,10 +1,9 @@
-import React from 'react'
-import DashboardUI from '../../components/UI/dashboardUI'
+import React from "react";
+import AdminDashboardUI from "../../components/UI/adminDashboardUI";
 
 const Dashboard = () => {
-  return (
-    <DashboardUI />
-  )
-}
 
-export default Dashboard
+  return <AdminDashboardUI />;
+};
+
+export default Dashboard;

@@ -8,9 +8,14 @@ const LoginUI = ({onSubmitHandler , onChangeHandler,inputData}) => {
 
   return (
     <div className={styles.wrapper}>
+      <div className={styles.login_wrapper}>
+        <div className={styles.image_wrapper}>
+          <img src="/images/signin.jpg" alt="signin" />
+        </div>
+        <div className={styles.form_outer_wrapper}>
       <div className={styles.form_wrapper}>
         <FontAwesomeIcon icon={faUser} className={styles.icon} />
-        <h2>SIGN IN</h2>
+        <h3>SIGN IN</h3>
         <form onSubmit={onSubmitHandler}>
           <div className={styles.inner_form_wrapper}>
             <input
@@ -43,7 +48,9 @@ const LoginUI = ({onSubmitHandler , onChangeHandler,inputData}) => {
             </Link>
           </span>
         </div>
-      </div>
+        </div>
+        </div>
+        </div>
     </div>
   );
 };

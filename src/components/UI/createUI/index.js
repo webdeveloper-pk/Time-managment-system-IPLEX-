@@ -1,12 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import styles from "./SignUpUI.module.css";
+import styles from "./CreateUI.module.css";
 
-const SignUpUI = ({inputData , onChangeHandler, onSubmitHandler}) => {
-  
+const CreateUI = ({ createData, onChangeHandler, onSubmitHandler }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.login_wrapper}>
@@ -16,7 +13,7 @@ const SignUpUI = ({inputData , onChangeHandler, onSubmitHandler}) => {
         <div className={styles.form_outer_wrapper}>
           <div className={styles.form_wrapper}>
             <FontAwesomeIcon icon={faUser} className={styles.icon} />
-            <h3>SIGN UP</h3>
+            <h3>Create User</h3>
             <form onSubmit={onSubmitHandler}>
               <div className={styles.inner_form_wrapper}>
                 <input
@@ -24,7 +21,7 @@ const SignUpUI = ({inputData , onChangeHandler, onSubmitHandler}) => {
                   placeholder="First Name"
                   id="firstName"
                   name="firstName"
-                  value={inputData.firstName}
+                  value={createData.firstName}
                   onChange={onChangeHandler}
                 />
                 <input
@@ -32,7 +29,7 @@ const SignUpUI = ({inputData , onChangeHandler, onSubmitHandler}) => {
                   placeholder="Last Name"
                   id="lastName"
                   name="lastName"
-                  value={inputData.lastName}
+                  value={createData.lastName}
                   onChange={onChangeHandler}
                 />
                 <input
@@ -40,7 +37,7 @@ const SignUpUI = ({inputData , onChangeHandler, onSubmitHandler}) => {
                   placeholder="Email"
                   id="email"
                   name="email"
-                  value={inputData.email}
+                  value={createData.email}
                   onChange={onChangeHandler}
                 />
                 <input
@@ -48,7 +45,7 @@ const SignUpUI = ({inputData , onChangeHandler, onSubmitHandler}) => {
                   placeholder="*******"
                   id="password"
                   name="password"
-                  value={inputData.password}
+                  value={createData.password}
                   onChange={onChangeHandler}
                 />
                 <input
@@ -56,22 +53,31 @@ const SignUpUI = ({inputData , onChangeHandler, onSubmitHandler}) => {
                   placeholder="Confirm Password"
                   id="password_confirmation"
                   name="password_confirmation"
-                  value={inputData.password_confirmation}
+                  value={createData.password_confirmation}
                   onChange={onChangeHandler}
                 />
+                <div className={styles.usertype_wrapper}>
+                  <p>User Type:</p>
+                  <input
+                    type="radio"
+                    id="manager"
+                    name="userType"
+                    value={createData.userType}
+                  />
+                   <label for="manager">Manager</label>
+                  <input
+                    type="radio"
+                    id="user"
+                    name="userType"
+                    value={createData.userType}
+                  />
+                  <label for="user">User</label>
+                </div>
                 <button className={styles.signup_button} type="submit">
-                  SIGN UP
+                  Create
                 </button>
               </div>
             </form>
-            <div className={styles.bottom_wrapper}>
-              Already Have an Account?
-              <span>
-                <Link to="/login" className={styles.link}>
-                  Log In
-                </Link>
-              </span>
-            </div>
           </div>
         </div>
       </div>
@@ -79,4 +85,4 @@ const SignUpUI = ({inputData , onChangeHandler, onSubmitHandler}) => {
   );
 };
 
-export default SignUpUI;
+export default CreateUI;

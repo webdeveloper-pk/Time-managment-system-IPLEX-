@@ -21,8 +21,6 @@
 
 .login_wrapper .image_wrapper {
   width: 50%;
-   transform: translateY(100rem);
-  animation: slideIn 1.2s forwards;
 }
 
 .login_wrapper .image_wrapper img {
@@ -35,8 +33,6 @@
   justify-content: center;
   align-items: center;
   width: 50%;
-   transform: translateY(-100rem);
-  animation: slideIn 1.2s forwards;
 }
 
 .wrapper .form_wrapper {
@@ -73,7 +69,7 @@
   border-radius: 20px;
   padding: 10px 40px;
   color: rgb(204, 188, 188);
-  margin-top: 20px;
+  margin-top: 10px;
   cursor: pointer;
 }
 
@@ -89,6 +85,18 @@
   text-align: center;
   border: 1px solid #3a6e80;
   color: #7e8ba3;
+}
+
+.inner_form_wrapper .usertype_wrapper{
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.usertype_wrapper p {
+  margin-right: 15px;
 }
 
 .inner_form_wrapper input::placeholder {
@@ -116,7 +124,7 @@
 }
 
 .bottom_wrapper {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .bottom_wrapper span {
@@ -133,25 +141,17 @@
   color: rgb(175, 57, 57);
 }
 
-/* animations */
-@keyframes slideIn {
-  from {
-  }
-  to {
-    transform: translateX(0);
-  }
-}
 
 /* media queries */
-@media screen and (max-width:768px){
+@media screen and (max-width: 768px) {
   .wrapper .login_wrapper {
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-height: unset;
-  height: unset;
-}
-.login_wrapper .image_wrapper {
-  display: none;
-}
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: unset;
+    height: unset;
+  }
+  .login_wrapper .image_wrapper {
+    display: none;
+  }
 }
