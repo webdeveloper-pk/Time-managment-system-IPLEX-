@@ -1,19 +1,19 @@
-import React , {useState} from "react";
-// import Navbar from "../../navbar/index";
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import styles from "./ManagerDashboardUI.module.css";
 
 const ManagerDashboardUI = () => {
+  const [hamburg, setHamburg] = useState(false);
 
-    const [hamburg, setHamburg] = useState(false);
-
-    const clickHandler = () => {
-      if (hamburg === false) {
-        setHamburg(true);
-      } else {
-        setHamburg(false);
-      }
+  const clickHandler = () => {
+    if (hamburg === false) {
+      setHamburg(true);
+    } else {
+      setHamburg(false);
+    }
   };
-  
+
   return (
     <div className={styles.dashboard_wrapper}>
       <div className={styles.navbar_wrapper}>
@@ -60,32 +60,33 @@ const ManagerDashboardUI = () => {
         <input type="date" id="enddate" name="enddate" />
         <button>Search</button>
       </div>
-      <div>
+      <div className="container">
         <div className="row justify-content-center">
+          <h3 className={styles.list_heading}>Users List</h3>
           <div className="col-8">
             <table className="table">
               <thead className={styles.thead}>
                 <tr className="text-center">
                   <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
-                  <th scope="col">Action</th>
-                  <th scope="col">Action</th>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="text-center">
-                  <td>test</td>
+                  <td>1</td>
                   <td>test</td>
                   <td>test</td>
                   <td>test</td>
                   <td>
-                    <button className="edit-button">Edit</button>
-                  </td>
-
-                  <td>
-                    <button className="delete-button">Delete</button>
+                    <button>
+                      <FontAwesomeIcon icon={faPen} className="edit_icon" />
+                    </button>
+                    <button>
+                      <FontAwesomeIcon icon={faTrash} className="dlt_icon" />
+                    </button>
                   </td>
                 </tr>
               </tbody>

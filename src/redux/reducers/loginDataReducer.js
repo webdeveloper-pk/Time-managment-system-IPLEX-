@@ -4,7 +4,7 @@ const initialState = {
   error: null,
 };
 
-const posts = (state = initialState, action) => {
+const loginposts = (state = initialState, action) => {
   switch (action.type) {
     case "FETCH_POSTS_REQUEST":
       return {
@@ -29,4 +29,4 @@ const posts = (state = initialState, action) => {
   }
 };
 
-export default posts;
+export default loginposts;

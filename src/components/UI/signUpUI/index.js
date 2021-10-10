@@ -5,13 +5,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import styles from "./SignUpUI.module.css";
 
-const SignUpUI = ({inputData , onChangeHandler, onSubmitHandler}) => {
-  
+const SignUpUI = ({ inputData, onChangeHandler, onSubmitHandler }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.login_wrapper}>
         <div className={styles.image_wrapper}>
-          <img src="/images/signin.jpg" alt="signin" />
+          <img src="/images/signin.jpeg" alt="signin" />
         </div>
         <div className={styles.form_outer_wrapper}>
           <div className={styles.form_wrapper}>
@@ -62,16 +61,24 @@ const SignUpUI = ({inputData , onChangeHandler, onSubmitHandler}) => {
                 <button className={styles.signup_button} type="submit">
                   SIGN UP
                 </button>
+                <div>
+                  <p>
+                    Back to
+                    <Link to="/dashboard" className={styles.dashboard_link}>
+                      Dashboard
+                    </Link>
+                  </p>
+                </div>
               </div>
             </form>
-            <div className={styles.bottom_wrapper}>
+            {/* <div className={styles.bottom_wrapper}>
               Already Have an Account?
               <span>
                 <Link to="/login" className={styles.link}>
                   Log In
                 </Link>
               </span>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

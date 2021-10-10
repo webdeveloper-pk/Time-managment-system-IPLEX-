@@ -1,8 +1,10 @@
+import posts from "./FormData";
+import loginposts from "./loginDataReducer"
 import { combineReducers } from "redux";
-import todoReducers from "./FormData";
 
-const rootreducer = combineReducers({
-  todoReducers,
+const rootReducer = combineReducers({
+  posts,
+  loginposts,
 });
 
-export default rootreducer;
+export default rootReducer;

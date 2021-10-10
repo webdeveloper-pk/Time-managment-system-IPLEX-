@@ -1,4 +1,7 @@
-import React , {useState} from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import styles from "./AdminDashboardUI.module.css";
 
 const AdminDashboardUI = () => {
@@ -20,8 +23,16 @@ const AdminDashboardUI = () => {
           <h2>Dashboard</h2>
         </div>
         <div className={styles.menuItem_wrapper}>
-          <button className={styles.create_btn}>Create Manager</button>
-          <button className={styles.create_btn}>Create User</button>
+          <button className={styles.create_btn}>
+            <Link to="/signup" className={styles.create_manager}>
+              Create Manager
+            </Link>
+          </button>
+          <button className={styles.create_btn}>
+            <Link to="/create" className={styles.create_manager}>
+              Create User
+            </Link>
+          </button>
           <button className={styles.logout_btn}>Log Out</button>
           <button className={styles.humberg_button} onClick={clickHandler}>
             <span
@@ -53,8 +64,7 @@ const AdminDashboardUI = () => {
           )}
         </div>
       </div>
-      <div className={styles.filtring_wrapper}></div>
-      <div>
+      <div className="container">
         <div className="row justify-content-center">
           <div className="col-8">
             <h3 className="text-center mb-4">Mangers List</h3>
@@ -65,22 +75,22 @@ const AdminDashboardUI = () => {
                   <th scope="col">First</th>
                   <th scope="col">Last</th>
                   <th scope="col">Handle</th>
-                  <th scope="col">Action</th>
-                  <th scope="col">Action</th>
+                  <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="text-center">
-                  <td>test</td>
+                  <td>1</td>
                   <td>test</td>
                   <td>test</td>
                   <td>test</td>
                   <td>
-                    <button className="edit-button">Edit</button>
-                  </td>
-
-                  <td>
-                    <button className="delete-button">Delete</button>
+                    <button>
+                      <FontAwesomeIcon icon={faPen} className="edit_icon" />
+                    </button>
+                    <button>
+                      <FontAwesomeIcon icon={faTrash} className="dlt_icon" />
+                    </button>
                   </td>
                 </tr>
               </tbody>
@@ -97,8 +107,7 @@ const AdminDashboardUI = () => {
                   <th scope="col">First</th>
                   <th scope="col">Last</th>
                   <th scope="col">Handle</th>
-                  <th scope="col">Action</th>
-                  <th scope="col">Action</th>
+                  <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -108,11 +117,12 @@ const AdminDashboardUI = () => {
                   <td>test</td>
                   <td>test</td>
                   <td>
-                    <button className="edit-button">Edit</button>
-                  </td>
-
-                  <td>
-                    <button className="delete-button">Delete</button>
+                    <button>
+                      <FontAwesomeIcon icon={faPen} className="edit_icon" />
+                    </button>
+                    <button>
+                      <FontAwesomeIcon icon={faTrash} className="dlt_icon" />
+                    </button>
                   </td>
                 </tr>
               </tbody>

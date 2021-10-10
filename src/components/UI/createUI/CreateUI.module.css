@@ -21,6 +21,8 @@
 
 .login_wrapper .image_wrapper {
   width: 50%;
+  transform: translateY(-100rem);
+  animation: slideIn 1.2s forwards;
 }
 
 .login_wrapper .image_wrapper img {
@@ -33,6 +35,8 @@
   justify-content: center;
   align-items: center;
   width: 50%;
+  transform: translateY(100rem);
+  animation: slideIn 1.2s forwards;
 }
 
 .wrapper .form_wrapper {
@@ -61,6 +65,12 @@
   align-items: center;
   gap: 10px;
   margin-top: 15px;
+}
+
+.inner_form_wrapper .link {
+text-decoration: none;
+color: #3a6e80;
+margin-top: 10px;
 }
 
 .signup_button {
@@ -141,6 +151,14 @@
   color: rgb(175, 57, 57);
 }
 
+/* animations */
+@keyframes slideIn {
+  from {
+  }
+  to {
+    transform: translateX(0);
+  }
+}
 
 /* media queries */
 @media screen and (max-width: 768px) {
@@ -150,6 +168,7 @@
     align-items: center;
     max-height: unset;
     height: unset;
+    padding: 30px 0px;
   }
   .login_wrapper .image_wrapper {
     display: none;

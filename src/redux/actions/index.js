@@ -1,10 +1,9 @@
-export const addTodo = (data) => {
-  return {
-    type: "ADD_TODO",
-    payload: {
-      data: data,
-    },
-  };
+import signup from "./signUpData"
+import loginData from "./loginData";
+
+const allActions = {
+  signup,
+  loginData,
 };
 
-
+export default allActions;

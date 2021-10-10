@@ -1,5 +1,6 @@
 import React , {useState} from "react";
-// import Navbar from "../../navbar/index";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import styles from "./UserDashboardUI.module.css";
 
 const UserDashboardUI = () => {
@@ -53,8 +54,8 @@ const UserDashboardUI = () => {
         </div>
       </div>
       <div className={styles.form_wrapper}>
-        <h3>Add Record Here</h3>
         <form>
+          <h3>Add Record Here</h3>
           <input type="date" placeholder="Add Date" />
           <input type="number" placeholder="Add Hours" />
           <input type="text" placeholder="Add Description" />
@@ -71,8 +72,7 @@ const UserDashboardUI = () => {
                   <th scope="col">Log Date</th>
                   <th scope="col">Hours</th>
                   <th scope="col">Description</th>
-                  <th scope="col">Action</th>
-                  <th scope="col">Action</th>
+                  <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -82,11 +82,12 @@ const UserDashboardUI = () => {
                   <td>test</td>
                   <td>test</td>
                   <td>
-                    <button className="edit-button">Edit</button>
-                  </td>
-
-                  <td>
-                    <button className="delete-button">Delete</button>
+                    <button>
+                      <FontAwesomeIcon icon={faPen} className="edit_icon" />
+                    </button>
+                    <button>
+                      <FontAwesomeIcon icon={faTrash} className="dlt_icon" />
+                    </button>
                   </td>
                 </tr>
               </tbody>

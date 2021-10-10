@@ -1,4 +1,6 @@
-import React , {useState} from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import allActions from "../../redux/actions"
 import SignUpUI from "../../components/UI/signUpUI";
 
 const SignUp = () => {
@@ -11,11 +13,7 @@ const SignUp = () => {
     password_confirmation: "",
   });
 
-  // const [data, setData] = useState([]);
-
-  // const dispatch = useDispatch();
-  // const stateData = useSelector(state => state.todoReducer);
-  // console.log("redux data" , stateData)
+  const dispatch = useDispatch();
 
   const onChangeHandler = (e) => {
     setInputData({
@@ -26,15 +24,7 @@ const SignUp = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    fetch("http://34.210.129.167/api/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(inputData),
-    })
-      .then((response) => response.json())
-      .then((inputData) => alert(inputData, "success"));
+    dispatch(allActions.signup.signupManager(inputData));
   };
 
   return (

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import styles from "./CreateUI.module.css";
@@ -8,7 +9,7 @@ const CreateUI = ({ createData, onChangeHandler, onSubmitHandler }) => {
     <div className={styles.wrapper}>
       <div className={styles.login_wrapper}>
         <div className={styles.image_wrapper}>
-          <img src="/images/signin.jpg" alt="signin" />
+          <img src="/images/signin.jpeg" alt="signin" />
         </div>
         <div className={styles.form_outer_wrapper}>
           <div className={styles.form_wrapper}>
@@ -56,6 +57,15 @@ const CreateUI = ({ createData, onChangeHandler, onSubmitHandler }) => {
                   value={createData.password_confirmation}
                   onChange={onChangeHandler}
                 />
+                {/* <input
+                  type="text"
+                  placeholder="userType-user"
+                  id="user"
+                  name="user"
+                  value={createData.user}
+                  onChange={onChangeHandler}
+                  disabled
+                /> */}
                 <div className={styles.usertype_wrapper}>
                   <p>User Type:</p>
                   <input
@@ -76,6 +86,14 @@ const CreateUI = ({ createData, onChangeHandler, onSubmitHandler }) => {
                 <button className={styles.signup_button} type="submit">
                   Create
                 </button>
+                <div>
+                  <p>
+                    Back to{" "}
+                    <Link to="/dashboard" className={styles.link}>
+                      Dashboard
+                    </Link>
+                  </p>
+                </div>
               </div>
             </form>
           </div>

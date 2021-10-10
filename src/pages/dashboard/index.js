@@ -1,9 +1,9 @@
 import React from "react";
-import AdminDashboardUI from "../../components/UI/adminDashboardUI";
+import ManagerDashboardUI from "../../components/UI/managerDashboardUI";
 
 const Dashboard = () => {
 
-  return <AdminDashboardUI />;
+  return <ManagerDashboardUI />;
 };
 
 export default Dashboard;
