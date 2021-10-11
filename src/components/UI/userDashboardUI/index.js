@@ -62,7 +62,7 @@ const UserDashboardUI = () => {
           <button className={styles.create_btn}>Add Record</button>
         </form>
       </div>
-      <div>
+      <div className="container">
         <div className="row justify-content-center">
           <div className="col-8">
             <table className="table">

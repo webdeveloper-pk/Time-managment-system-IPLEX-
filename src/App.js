@@ -7,9 +7,11 @@ import {
 // import { Helmet } from "react-helmet";
 import Login from "./pages/logIn";
 import SignUp from "./pages/signUp";
-import Home from "./pages/home";
-import Dashboard from "./pages/dashboard";
-import Create from "./pages/create"
+import AdminDashboard from "./pages/adminDashboard";
+import ManagerDashboard from "./pages/managerDashboard";
+import UserDashboard from "./pages/userDashboard";
+import Create from "./pages/create";
+import ProtectedRoute from "./components/protectedRoutes";
 import ErrorPage from "./pages/errorPage/ErrorPage";
 import "./App.css";
 
@@ -23,11 +25,21 @@ const App = () => {
       </Helmet> */}
       <Router>
         <Switch>
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/" component={Home} />
-          <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/create" component={Create} />
+          <Route exact path="/" component={Login} />
+          <Route  path="/signup" component={SignUp} />
+          <ProtectedRoute
+            path="/admindashboard"
+            component={AdminDashboard}
+          />
+          <ProtectedRoute
+            path="/managerdashboard"
+            component={ManagerDashboard}
+          />
+          <ProtectedRoute
+            path="/userdashboard"
+            component={UserDashboard}
+          />
+          <ProtectedRoute exact path="/create" component={Create} />
           <Route exact path="/404" component={ErrorPage} />
           <Redirect from="*" to="/404" />
         </Switch>

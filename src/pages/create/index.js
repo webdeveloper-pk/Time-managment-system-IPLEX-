@@ -1,4 +1,5 @@
-import React , {useState} from 'react'
+import React, { useState } from 'react'
+import { withRouter } from "react-router-dom";
 import CreateUI from '../../components/UI/createUI'
 
 const Create = () => {
@@ -26,4 +27,4 @@ const Create = () => {
   )
 }
 
-export default Create
+export default withRouter(Create);
