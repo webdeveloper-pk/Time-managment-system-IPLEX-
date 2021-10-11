@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch  , useSelector} from "react-redux";
+import { useDispatch  } from "react-redux";
 import allActions from "../../redux/actions";
 import LoginUI from "../../components/UI/loginUI";
 
@@ -12,8 +12,7 @@ const Login = () => {
 
   const dispatch = useDispatch();
   
-  const logindata = useSelector((state) => state.loginposts);
-  console.log(logindata , "array")
+  // const logindata = useSelector((state) => state.loginposts);
   
   const onChangeHandler = (e) => {
     setInputData({ ...inputData, [e.target.name]: e.target.value });
@@ -33,6 +32,7 @@ const Login = () => {
     //     alert(data.user.lastName);
     //   });
     dispatch(allActions.loginData.fetchPost(inputData));
+    
   };
 
   return (

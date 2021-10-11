@@ -57,7 +57,7 @@ const CreateUI = ({ createData, onChangeHandler, onSubmitHandler }) => {
                   value={createData.password_confirmation}
                   onChange={onChangeHandler}
                 />
-                {/* <input
+                <input
                   type="text"
                   placeholder="userType-user"
                   id="user"
@@ -65,8 +65,8 @@ const CreateUI = ({ createData, onChangeHandler, onSubmitHandler }) => {
                   value={createData.user}
                   onChange={onChangeHandler}
                   disabled
-                /> */}
-                <div className={styles.usertype_wrapper}>
+                />
+                {/* <div className={styles.usertype_wrapper}>
                   <p>User Type:</p>
                   <input
                     type="radio"
@@ -82,7 +82,7 @@ const CreateUI = ({ createData, onChangeHandler, onSubmitHandler }) => {
                     value={createData.userType}
                   />
                   <label for="user">User</label>
-                </div>
+                </div> */}
                 <button className={styles.signup_button} type="submit">
                   Create
                 </button>

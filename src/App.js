@@ -31,7 +31,7 @@ const App = () => {
             path="/admindashboard"
             component={AdminDashboard}
           />
-          <ProtectedRoute
+          <Route
             path="/managerdashboard"
             component={ManagerDashboard}
           />
@@ -39,7 +39,7 @@ const App = () => {
             path="/userdashboard"
             component={UserDashboard}
           />
-          <ProtectedRoute exact path="/create" component={Create} />
+          <Route exact path="/create" component={Create} />
           <Route exact path="/404" component={ErrorPage} />
           <Redirect from="*" to="/404" />
         </Switch>

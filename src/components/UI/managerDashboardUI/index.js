@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import styles from "./ManagerDashboardUI.module.css";
@@ -21,7 +22,9 @@ const ManagerDashboardUI = () => {
           <h2>Dashboard</h2>
         </div>
         <div className={styles.menuItem_wrapper}>
-          <button className={styles.create_btn}>Create User</button>
+          <button className={styles.create_btn}>
+            <Link to="/create">Create User</Link>
+          </button>
           <button className={styles.logout_btn}>Log Out</button>
           <button className={styles.humberg_button} onClick={clickHandler}>
             <span

@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router";
+// import { withRouter } from "react-router";
 import ManagerDashboardUI from "../../components/UI/managerDashboardUI";
 
 const ManagerDashboard = () => {
@@ -7,4 +7,4 @@ const ManagerDashboard = () => {
   return <ManagerDashboardUI />;
 };
 
-export default withRouter(ManagerDashboard);
+export default ManagerDashboard;

@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { withRouter } from "react-router-dom";
+// import { withRouter } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import allActions from "../../redux/actions"
 import CreateUI from '../../components/UI/createUI'
 
 const Create = () => {
@@ -9,8 +11,10 @@ const Create = () => {
     email: "",
     password: "",
     password_confirmation: "",
-    userType:""
+    userType:"user"
   });
+
+  const dispatch = useDispatch();
 
    const onChangeHandler = (e) => {
      setCreateData({
@@ -19,7 +23,10 @@ const Create = () => {
      });
   };
   
-   const onSubmitHandler = (e) => {
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    dispatch(allActions.userDataPosts.userPost(createData));
+    console.log(createData , "ceate data")
   };
   
   return (
@@ -27,4 +34,4 @@ const Create = () => {
   )
 }
 
-export default withRouter(Create);
+export default Create;
