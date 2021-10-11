@@ -26,7 +26,6 @@ const Create = () => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     dispatch(allActions.userDataPosts.userPost(createData));
-    console.log(createData , "ceate data")
   };
   
   return (

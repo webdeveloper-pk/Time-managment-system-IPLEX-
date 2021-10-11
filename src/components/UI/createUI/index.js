@@ -61,8 +61,8 @@ const CreateUI = ({ createData, onChangeHandler, onSubmitHandler }) => {
                   type="text"
                   placeholder="userType-user"
                   id="user"
-                  name="user"
-                  value={createData.user}
+                  name="userType"
+                  value={createData.userType}
                   onChange={onChangeHandler}
                   disabled
                 />
@@ -88,7 +88,7 @@ const CreateUI = ({ createData, onChangeHandler, onSubmitHandler }) => {
                 </button>
                 <div>
                   <p>
-                    Back to{" "}
+                    Back to
                     <Link to="/dashboard" className={styles.link}>
                       Dashboard
                     </Link>

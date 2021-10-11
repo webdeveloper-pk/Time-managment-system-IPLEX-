@@ -1,30 +1,15 @@
 import axios from "axios";
 
-const userPost = (user) => async (dispatch) => {
-  
-  const firstName = user.firstName;
-  const lastName = user.lastName;
-  const email = user.email;
-  const password = user.password;
-  const password_confirmation = user.password_confirmation;
-  const userType = user.userType;
-  
+const getUserPost = (user) => async (dispatch) => {
+
   const userToken = localStorage.getItem("token");
-  console.log("token", userToken)
+  console.log("token", userToken);
 
   dispatch(requestPosts());
   try {
-     await axios
-      .post(
+    await axios
+      .get(
         "http://34.210.129.167/api/users",
-        {
-          firstName,
-          lastName,
-          email,
-          password,
-          password_confirmation,
-          userType,
-        },
         {
           headers: {
             Authorization: `Bearer ${userToken}`,
@@ -33,7 +18,7 @@ const userPost = (user) => async (dispatch) => {
       )
       .then((res) => {
         const userData = res.data;
-        console.log(res)
+        console.log(res);
         dispatch({ type: "FETCH_POSTS_SUCCESS", payload: userData });
         localStorage.setItem(
           "login",
@@ -54,7 +39,7 @@ const requestPosts = () => {
 };
 
 const exportObject = {
-  userPost,
+  getUserPost,
   requestPosts,
 };
 export default exportObject;

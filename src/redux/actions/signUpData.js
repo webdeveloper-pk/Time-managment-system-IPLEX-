@@ -9,7 +9,7 @@ const signupManager = (user) => async (dispatch) => {
 
   dispatch(requestPosts());
   try {
-    const response = await axios.post(`http://34.210.129.167/api/register`, {
+    const response = await axios.post("http://34.210.129.167/api/register", {
       firstName, lastName, email, password, password_confirmation
     }).then((res) => {
     const signupData = res.data;

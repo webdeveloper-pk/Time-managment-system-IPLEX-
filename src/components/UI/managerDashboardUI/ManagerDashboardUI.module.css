@@ -64,12 +64,16 @@
   gap: 15px;
 }
 
+.menuItem_wrapper .user_link{
+  text-decoration: none;
+  color: #08546c;
+}
+
 .menuItem_wrapper .create_btn {
   background-color: #ffffff;
   border-radius: 10px;
   padding: 6px 12px;
   border: none;
-  color: #08546c;
 }
 
 .menuItem_wrapper .logout_btn {
@@ -176,6 +180,10 @@
   text-align: center;
   margin-top: 30px;
   margin-bottom: 20px;
+}
+
+tr ,td{
+  text-align: center;
 }
 
 /* media queries */

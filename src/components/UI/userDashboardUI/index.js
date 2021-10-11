@@ -1,20 +1,30 @@
-import React , {useState} from "react";
+import React, { useState , useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
+import allActions from "../../../redux/actions";
 import styles from "./UserDashboardUI.module.css";
 
-const UserDashboardUI = () => {
+const UserDashboardUI = ({ logData, onChangeHandler, onSubmitHandler }) => {
+  const [hamburg, setHamburg] = useState(false);
 
-    const [hamburg, setHamburg] = useState(false);
-
-    const clickHandler = () => {
-      if (hamburg === false) {
-        setHamburg(true);
-      } else {
-        setHamburg(false);
-      }
-  };
+  const dispatch = useDispatch();
+  const userslog = useSelector((state) => state?.getuserlogss?.postItems?.workLogs?.data);
+  console.log(userslog , "logs")
   
+  const clickHandler = () => {
+    if (hamburg === false) {
+      setHamburg(true);
+    } else {
+      setHamburg(false);
+    }
+  };
+
+  useEffect(() => {
+    dispatch(allActions.getlogsusers.getUserLogs());
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className={styles.dashboard_wrapper}>
       <div className={styles.navbar_wrapper}>
@@ -54,11 +64,29 @@ const UserDashboardUI = () => {
         </div>
       </div>
       <div className={styles.form_wrapper}>
-        <form>
+        <form onSubmit={onSubmitHandler}>
           <h3>Add Record Here</h3>
-          <input type="date" placeholder="Add Date" />
-          <input type="number" placeholder="Add Hours" />
-          <input type="text" placeholder="Add Description" />
+          <input
+            type="date"
+            placeholder="Add Date"
+            name="logDate"
+            value={logData.logDate}
+            onChange={onChangeHandler}
+          />
+          <input
+            type="number"
+            placeholder="Add Hours"
+            name="hours"
+            value={logData.hours}
+            onChange={onChangeHandler}
+          />
+          <input
+            type="text"
+            placeholder="Add Description"
+            name="description"
+            value={logData.description}
+            onChange={onChangeHandler}
+          />
           <button className={styles.create_btn}>Add Record</button>
         </form>
       </div>
@@ -76,20 +104,34 @@ const UserDashboardUI = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr className="text-center">
-                  <td>1</td>
-                  <td>test</td>
-                  <td>test</td>
-                  <td>test</td>
-                  <td>
-                    <button>
-                      <FontAwesomeIcon icon={faPen} className="edit_icon" />
-                    </button>
-                    <button>
-                      <FontAwesomeIcon icon={faTrash} className="dlt_icon" />
-                    </button>
-                  </td>
-                </tr>
+                {userslog?.length ? (
+                  userslog.map((data) => {
+                    return (
+                      <tr key={data.id}>
+                        <td>{data.id}</td>
+                        <td>{data.logDate}</td>
+                        <td>{data.hours}</td>
+                        <td>{data.description}</td>
+                        <td>
+                          <button>
+                            <FontAwesomeIcon
+                              icon={faPen}
+                              className="edit_icon"
+                            />
+                          </button>
+                          <button>
+                            <FontAwesomeIcon
+                              icon={faTrash}
+                              className="dlt_icon"
+                            />
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <h3>Loading</h3>
+                )}
               </tbody>
             </table>
           </div>

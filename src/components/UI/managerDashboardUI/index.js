@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
+import allActions from "../../../redux/actions";
 import styles from "./ManagerDashboardUI.module.css";
 
 const ManagerDashboardUI = () => {
   const [hamburg, setHamburg] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const managerUpdatedData = useSelector(
+    (state) => state?.getuserposts?.postItems?.users?.data
+  );
 
   const clickHandler = () => {
     if (hamburg === false) {
@@ -15,6 +23,11 @@ const ManagerDashboardUI = () => {
     }
   };
 
+  useEffect(() => {
+    dispatch(allActions.getUserData.getUserPost());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); 
+
   return (
     <div className={styles.dashboard_wrapper}>
       <div className={styles.navbar_wrapper}>
@@ -23,7 +36,9 @@ const ManagerDashboardUI = () => {
         </div>
         <div className={styles.menuItem_wrapper}>
           <button className={styles.create_btn}>
-            <Link to="/create">Create User</Link>
+            <Link to="/create" className={styles.user_link}>
+              Create User
+            </Link>
           </button>
           <button className={styles.logout_btn}>Log Out</button>
           <button className={styles.humberg_button} onClick={clickHandler}>
@@ -70,7 +85,7 @@ const ManagerDashboardUI = () => {
             <table className="table">
               <thead className={styles.thead}>
                 <tr className="text-center">
-                  <th scope="col">#</th>
+                  <th scope="col">id</th>
                   <th scope="col">First Name</th>
                   <th scope="col">Last Name</th>
                   <th scope="col">Email</th>
@@ -78,20 +93,34 @@ const ManagerDashboardUI = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr className="text-center">
-                  <td>1</td>
-                  <td>test</td>
-                  <td>test</td>
-                  <td>test</td>
-                  <td>
-                    <button>
-                      <FontAwesomeIcon icon={faPen} className="edit_icon" />
-                    </button>
-                    <button>
-                      <FontAwesomeIcon icon={faTrash} className="dlt_icon" />
-                    </button>
-                  </td>
-                </tr>
+                {managerUpdatedData?.length ? (
+                  managerUpdatedData.map((data) => {
+                    return (
+                      <tr key={data.id}>
+                        <td>{data.id}</td>
+                        <td>{data.firstName}</td>
+                        <td>{data.lastName}</td>
+                        <td>{data.email}</td>
+                        <td>
+                          <button>
+                            <FontAwesomeIcon
+                              icon={faPen}
+                              className="edit_icon"
+                            />
+                          </button>
+                          <button>
+                            <FontAwesomeIcon
+                              icon={faTrash}
+                              className="dlt_icon"
+                            />
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <h3>Loading</h3>
+                )}
               </tbody>
             </table>
           </div>
