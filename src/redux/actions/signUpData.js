@@ -13,18 +13,18 @@ const signupManager = (user) => async (dispatch) => {
       firstName, lastName, email, password, password_confirmation
     }).then((res) => {
     const signupData = res.data;
-      dispatch({ type: "FETCH_POSTS_SUCCESS", payload: signupData });
+      dispatch({ type: "FETCH_SIGNUP_SUCCESS", payload: signupData });
       console.log(response);
     });
 
   } catch (error) {
-    dispatch({ type: "FETCH_POSTS_FAILURE", payload: error });
+    dispatch({ type: "FETCH_SIGNUP_FAILURE", payload: error });
   }
 };
 
 const requestPosts = () => {
   return {
-    type: "FETCH_POSTS_REQUEST",
+    type: "FETCH_SIGNUP_REQUEST",
   };
 };
 

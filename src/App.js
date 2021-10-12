@@ -11,7 +11,7 @@ import AdminDashboard from "./pages/adminDashboard";
 import ManagerDashboard from "./pages/managerDashboard";
 import UserDashboard from "./pages/userDashboard";
 import Create from "./pages/create";
-import ProtectedRoute from "./components/protectedRoutes";
+// import ProtectedRoute from "./components/protectedRoutes";
 import ErrorPage from "./pages/errorPage/ErrorPage";
 import "./App.css";
 
@@ -26,21 +26,12 @@ const App = () => {
       <Router>
         <Switch>
           <Route exact path="/" component={Login} />
-          <Route  path="/signup" component={SignUp} />
-          <ProtectedRoute
-            path="/admindashboard"
-            component={AdminDashboard}
-          />
-          <Route
-            path="/managerdashboard"
-            component={ManagerDashboard}
-          />
-          <Route
-            path="/userdashboard"
-            component={UserDashboard}
-          />
-          <Route exact path="/create" component={Create} />
-          <Route exact path="/404" component={ErrorPage} />
+          <Route path="/signup" component={SignUp} />
+          <Route path="/admindashboard" component={AdminDashboard} />
+          <Route path="/managerdashboard" component={ManagerDashboard} />
+          <Route path="/userdashboard" component={UserDashboard} />
+          <Route path="/create" component={Create} />
+          <Route path="/404" component={ErrorPage} />
           <Redirect from="*" to="/404" />
         </Switch>
       </Router>

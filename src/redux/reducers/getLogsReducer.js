@@ -1,24 +1,24 @@
 const initialState = {
-  postItems: [],
+  logItems: [],
   loading: false,
   error: null,
 };
 
 const getuserlogss = (state = initialState, action) => {
   switch (action.type) {
-    case "FETCH_POSTS_REQUEST":
+    case "FETCH_LOGS_REQUEST":
       return {
         ...state,
         loading: true,
         error: null,
       };
-    case "FETCH_POSTS_SUCCESS":
+    case "FETCH_LOGS_SUCCESS":
       return {
         ...state,
         loading: false,
         postItems: action.payload,
       };
-    case "FETCH_POSTS_FAILURE":
+    case "FETCH_LOGS_FAILURE":
       return {
         ...state,
         loading: false,

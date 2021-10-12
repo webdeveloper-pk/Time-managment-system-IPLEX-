@@ -1,21 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
+import allActions from "../../../redux/actions";
 import styles from "./AdminDashboardUI.module.css";
 
 const AdminDashboardUI = () => {
+  const [hamburg, setHamburg] = useState(false);
 
-    const [hamburg, setHamburg] = useState(false);
+  const dispatch = useDispatch();
 
-    const clickHandler = () => {
-      if (hamburg === false) {
-        setHamburg(true);
-      } else {
-        setHamburg(false);
-      }
+  const adminUpdatedData = useSelector(
+    (state) => state?.getuserposts?.postItems?.users?.data
+  );
+
+  console.log(adminUpdatedData, "admin users");
+
+  const managerData = adminUpdatedData?.filter((arr) => {
+    return arr.roles[0].name === "manager";
+  });
+
+  console.log(managerData, "manager Data");
+
+  const userData = adminUpdatedData?.filter((arr) => {
+    return arr.roles[0].name === "user";
+  });
+
+  console.log(userData, "user Data");
+
+  const clickHandler = () => {
+    if (hamburg === false) {
+      setHamburg(true);
+    } else {
+      setHamburg(false);
+    }
   };
-  
+
+  const onDelete = (id) => {
+    dispatch(allActions.deleteusers.deleteUser(id));
+  };
+
+  useEffect(() => {
+    dispatch(allActions.getUserData.getUserPost());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className={styles.dashboard_wrapper}>
       <div className={styles.navbar_wrapper}>
@@ -67,32 +97,50 @@ const AdminDashboardUI = () => {
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-8">
-            <h3 className="text-center mb-4">Mangers List</h3>
+            <h3 className="text-center mb-4">Manager List</h3>
             <table className="table">
               <thead className={styles.thead}>
                 <tr className="text-center">
-                  <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Role</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className="text-center">
-                  <td>1</td>
-                  <td>test</td>
-                  <td>test</td>
-                  <td>test</td>
-                  <td>
-                    <button>
-                      <FontAwesomeIcon icon={faPen} className="edit_icon" />
-                    </button>
-                    <button>
-                      <FontAwesomeIcon icon={faTrash} className="dlt_icon" />
-                    </button>
-                  </td>
-                </tr>
+                {managerData?.length ? (
+                  managerData.map((data) => {
+                    return (
+                      <tr key={data.id}>
+                        <td>{data.firstName}</td>
+                        <td>{data.lastName}</td>
+                        <td>{data.email}</td>
+                        <td>{data.roles[0].name}</td>
+                        <td>
+                          <button>
+                            <FontAwesomeIcon
+                              icon={faPen}
+                              className="edit_icon"
+                            />
+                          </button>
+                          <button
+                            onClick={() => {
+                              onDelete(data.id);
+                            }}
+                          >
+                            <FontAwesomeIcon
+                              icon={faTrash}
+                              className="dlt_icon"
+                            />
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <h3>Loading</h3>
+                )}
               </tbody>
             </table>
           </div>
@@ -103,28 +151,52 @@ const AdminDashboardUI = () => {
             <table className="table">
               <thead className={styles.thead}>
                 <tr className="text-center">
-                  <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Role</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className="text-center">
-                  <td>test</td>
-                  <td>test</td>
-                  <td>test</td>
-                  <td>test</td>
-                  <td>
-                    <button>
-                      <FontAwesomeIcon icon={faPen} className="edit_icon" />
-                    </button>
-                    <button>
-                      <FontAwesomeIcon icon={faTrash} className="dlt_icon" />
-                    </button>
-                  </td>
-                </tr>
+                {userData?.length ? (
+                  userData.map((data) => {
+                    return (
+                      <tr key={data.id}>
+                        <td>{data.firstName}</td>
+                        <td>{data.lastName}</td>
+                        <td>{data.email}</td>
+                        <td>{data.roles[0].name}</td>
+                        {/* <td>
+                          <Link
+                            to={`/displaydetails/${data.id}`}
+                            className="link-styling"
+                          >View Details</Link>
+                        </td> */}
+                        <td>
+                          <button>
+                            <FontAwesomeIcon
+                              icon={faPen}
+                              className="edit_icon"
+                            />
+                          </button>
+                          <button
+                            onClick={() => {
+                              onDelete(data.id);
+                            }}
+                          >
+                            <FontAwesomeIcon
+                              icon={faTrash}
+                              className="dlt_icon"
+                            />
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <h3>Loading</h3>
+                )}
               </tbody>
             </table>
           </div>

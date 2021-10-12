@@ -1,10 +1,11 @@
+import { combineReducers } from "redux";
 import posts from "./FormData";
-import loginposts from "./loginDataReducer"
+import loginposts from "./loginDataReducer";
 import userposts from "./userReducer";
-import getuserposts from "./getUserReducer"
+import getuserposts from "./getUserReducer";
 import createuserss from "./createUserReducer";
 import getuserlogss from "./getLogsReducer";
-import { combineReducers } from "redux";
+import deleteuserposts from "./deleteUserReducer";
 
 const rootReducer = combineReducers({
   posts,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   getuserposts,
   createuserss,
   getuserlogss,
+  deleteuserposts,
 });
 
 export default rootReducer;

@@ -14,7 +14,7 @@ const fetchPost = (user) => async (dispatch) => {
     })
     .then((res) => {
       const loginData = res.data;
-      dispatch({ type: "FETCH_POSTS_SUCCESS", payload: loginData });
+      dispatch({ type: "FETCH_LOGIN_SUCCESS", payload: loginData });
       // storing token in local storage
       localStorage.setItem(
         "token",
@@ -23,13 +23,13 @@ const fetchPost = (user) => async (dispatch) => {
         console.log(loginData.token , "hello");
       });
     } catch (error) {
-    dispatch({ type: "FETCH_POSTS_FAILURE", payload: error });
+    dispatch({ type: "FETCH_LOGIN_FAILURE", payload: error });
   }
 };
 
 const requestPosts = () => {
   return {
-    type: "FETCH_POSTS_REQUEST",
+    type: "FETCH_LOGIN_REQUEST",
   };
 };
 

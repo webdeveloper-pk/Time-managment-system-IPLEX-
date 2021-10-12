@@ -1,17 +1,37 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faPen} from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import allActions from "../../../redux/actions";
 import styles from "./UserDashboardUI.module.css";
 
-const UserDashboardUI = ({ logData, onChangeHandler, onSubmitHandler }) => {
+const UserDashboardUI = () => {
   const [hamburg, setHamburg] = useState(false);
+  const [logData, setLogData] = useState({
+    logDate: "",
+    hours: "",
+    description: "",
+  });
 
   const dispatch = useDispatch();
-  const userslog = useSelector((state) => state?.getuserlogss?.postItems?.workLogs?.data);
-  console.log(userslog , "logs")
-  
+
+  const userslog = useSelector(
+    (state) => state?.getuserlogss?.postItems?.workLogs?.data
+  );
+  console.log(userslog, "logs");
+
+  const onChangeHandler = (e) => {
+    setLogData({
+      ...logData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    dispatch(allActions.createUserData.creatework(logData));
+  };
+
   const clickHandler = () => {
     if (hamburg === false) {
       setHamburg(true);
@@ -96,7 +116,6 @@ const UserDashboardUI = ({ logData, onChangeHandler, onSubmitHandler }) => {
             <table className="table">
               <thead className={styles.thead}>
                 <tr className="text-center">
-                  <th scope="col">#</th>
                   <th scope="col">Log Date</th>
                   <th scope="col">Hours</th>
                   <th scope="col">Description</th>
@@ -108,8 +127,7 @@ const UserDashboardUI = ({ logData, onChangeHandler, onSubmitHandler }) => {
                   userslog.map((data) => {
                     return (
                       <tr key={data.id}>
-                        <td>{data.id}</td>
-                        <td>{data.logDate}</td>
+                        <td>{data.log_date}</td>
                         <td>{data.hours}</td>
                         <td>{data.description}</td>
                         <td>
@@ -117,12 +135,6 @@ const UserDashboardUI = ({ logData, onChangeHandler, onSubmitHandler }) => {
                             <FontAwesomeIcon
                               icon={faPen}
                               className="edit_icon"
-                            />
-                          </button>
-                          <button>
-                            <FontAwesomeIcon
-                              icon={faTrash}
-                              className="dlt_icon"
                             />
                           </button>
                         </td>

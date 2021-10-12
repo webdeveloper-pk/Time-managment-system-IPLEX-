@@ -6,19 +6,19 @@ const initialState = {
 
 const loginposts = (state = initialState, action) => {
   switch (action.type) {
-    case "FETCH_POSTS_REQUEST":
+    case "FETCH_LOGIN_REQUEST":
       return {
         ...state,
         loading: true,
         error: null,
       };
-    case "FETCH_POSTS_SUCCESS":
+    case "FETCH_LOGIN_SUCCESS":
       return {
         ...state,
         loading: false,
         postItems: action.payload,
       };
-    case "FETCH_POSTS_FAILURE":
+    case "FETCH_LOGIN_FAILURE":
       return {
         ...state,
         loading: false,

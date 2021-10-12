@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const userPost = (user) => async (dispatch) => {
-  
+
   const firstName = user.firstName;
   const lastName = user.lastName;
   const email = user.email;
@@ -10,7 +10,7 @@ const userPost = (user) => async (dispatch) => {
   const userType = user.userType;
   
   const userToken = localStorage.getItem("token");
-  console.log("token", userToken)
+  console.log("user token", userToken)
 
   dispatch(requestPosts());
   try {
@@ -34,22 +34,16 @@ const userPost = (user) => async (dispatch) => {
       .then((res) => {
         const userData = res.data;
         console.log(res)
-        dispatch({ type: "FETCH_POSTS_SUCCESS", payload: userData });
-        localStorage.setItem(
-          "login",
-          JSON.stringify({
-            token: res.data.token,
-          })
-        );
+        dispatch({ type: "CREATE_USER_SUCCESS", payload: userData });
       });
   } catch (error) {
-    dispatch({ type: "FETCH_POSTS_FAILURE", payload: error });
+    dispatch({ type: "CREATE_USER_FAILURE", payload: error });
   }
 };
 
 const requestPosts = () => {
   return {
-    type: "FETCH_POSTS_REQUEST",
+    type: "CREATE_USER_REQUEST",
   };
 };
 

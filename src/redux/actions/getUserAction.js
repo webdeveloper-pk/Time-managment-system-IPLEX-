@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getUserPost = (user) => async (dispatch) => {
+const getUserPost = () => async (dispatch) => {
 
   const userToken = localStorage.getItem("token");
   console.log("token", userToken);
@@ -19,22 +19,16 @@ const getUserPost = (user) => async (dispatch) => {
       .then((res) => {
         const userData = res.data;
         console.log(res);
-        dispatch({ type: "FETCH_POSTS_SUCCESS", payload: userData });
-        localStorage.setItem(
-          "login",
-          JSON.stringify({
-            token: res.data.token,
-          })
-        );
+        dispatch({ type: "FETCH_USERS_SUCCESS", payload: userData });
       });
   } catch (error) {
-    dispatch({ type: "FETCH_POSTS_FAILURE", payload: error });
+    dispatch({ type: "FETCH_USERS_FAILURE", payload: error });
   }
 };
 
 const requestPosts = () => {
   return {
-    type: "FETCH_POSTS_REQUEST",
+    type: "FETCH_USERS_REQUEST",
   };
 };
 

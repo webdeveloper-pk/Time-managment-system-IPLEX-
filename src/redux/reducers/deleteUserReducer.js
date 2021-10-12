@@ -4,21 +4,21 @@ const initialState = {
   error: null,
 };
 
-const userposts = (state = initialState, action) => {
+const deleteuserposts = (state = initialState, action) => {
   switch (action.type) {
-    case "CREATE_USER_REQUEST":
+    case "DELETE_USER_REQUEST":
       return {
         ...state,
         loading: true,
         error: null,
       };
-    case "CREATE_USER_SUCCESS":
+    case "DELETE_USER_SUCCESS":
       return {
         ...state,
         loading: false,
         postItems: action.payload,
       };
-    case "CREATE_USER_FAILURE":
+    case "DELETE_USER_FAILURE":
       return {
         ...state,
         loading: false,
@@ -29,4 +29,4 @@ const userposts = (state = initialState, action) => {
   }
 };
 
-export default userposts;
+export default deleteuserposts;

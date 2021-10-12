@@ -4,6 +4,7 @@ import userDataPosts from "./userAction"
 import getUserData from "./getUserAction"
 import createUserData from "./createUserAction";
 import getlogsusers from "./getUserLogAction";
+import deleteusers from "./deleteUserAction";
 
 const allActions = {
   signup,
@@ -12,6 +13,7 @@ const allActions = {
   getUserData,
   createUserData,
   getlogsusers,
+  deleteusers,
 };
 
 export default allActions;

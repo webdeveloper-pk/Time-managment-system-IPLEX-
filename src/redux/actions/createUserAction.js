@@ -4,10 +4,10 @@ const creatework = (user) => async (dispatch) => {
   const logDate = user.logDate;
   const hours = user.hours;
   const description = user.description;
-  console.log( hours ,  "hours in testing")
+  console.log(hours, "hours in testing");
 
-    const userToken = localStorage.getItem("token");
-    console.log("creating log token", userToken);
+  const userToken = localStorage.getItem("token");
+  console.log("creating log token", userToken);
 
   dispatch(requestPosts());
   try {
@@ -17,7 +17,7 @@ const creatework = (user) => async (dispatch) => {
         {
           logDate,
           hours,
-          description
+          description,
         },
         {
           headers: {
@@ -27,22 +27,16 @@ const creatework = (user) => async (dispatch) => {
       )
       .then((res) => {
         const createData = res.data;
-        dispatch({ type: "FETCH_POSTS_SUCCESS", payload: createData });
-          localStorage.setItem(
-            "login",
-            JSON.stringify({
-              token: res.data.token,
-            })
-        );
+        dispatch({ type: "CREATE_LOGS_SUCCESS", payload: createData });
       });
   } catch (error) {
-    dispatch({ type: "FETCH_POSTS_FAILURE", payload: error });
+    dispatch({ type: "CREATE_LOGS_FAILURE", payload: error });
   }
 };
 
 const requestPosts = () => {
   return {
-    type: "FETCH_POSTS_REQUEST",
+    type: "CREATE_LOGS_REQUEST",
   };
 };
 

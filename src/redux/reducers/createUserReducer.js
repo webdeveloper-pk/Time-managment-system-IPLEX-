@@ -6,19 +6,19 @@ const initialState = {
 
 const createuserss = (state = initialState, action) => {
   switch (action.type) {
-    case "FETCH_POSTS_REQUEST":
+    case "CREATE_LOGS_REQUEST":
       return {
         ...state,
         loading: true,
         error: null,
       };
-    case "FETCH_POSTS_SUCCESS":
+    case "CREATE_LOGS_SUCCESS":
       return {
         ...state,
         loading: false,
         postItems: action.payload,
       };
-    case "FETCH_POSTS_FAILURE":
+    case "CREATE_LOGS_FAILURE":
       return {
         ...state,
         loading: false,

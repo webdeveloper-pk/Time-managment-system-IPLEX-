@@ -28,6 +28,10 @@ const ManagerDashboardUI = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); 
 
+  const onDelete = (id) => {
+    dispatch(allActions.deleteusers.deleteUser(id));
+  }
+
   return (
     <div className={styles.dashboard_wrapper}>
       <div className={styles.navbar_wrapper}>
@@ -108,7 +112,7 @@ const ManagerDashboardUI = () => {
                               className="edit_icon"
                             />
                           </button>
-                          <button>
+                          <button onClick={()=>{onDelete(data.id)}}>
                             <FontAwesomeIcon
                               icon={faTrash}
                               className="dlt_icon"
