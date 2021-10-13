@@ -9,6 +9,7 @@ import deleteuserposts from "./deleteUserReducer";
 import updateuserposts from "./updateUserReducer";
 import getsingleuser from "./getSingleUserReducer"
 import updatemanagerposts from "./updateMnagerReducer"
+import updatelogsposts from "./updateLogReducer";
 
 const rootReducer = combineReducers({
   posts,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   updateuserposts,
   getsingleuser,
   updatemanagerposts,
+  updatelogsposts,
 });
 
 export default rootReducer;

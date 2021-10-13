@@ -7,6 +7,7 @@ import getlogsusers from "./getUserLogAction";
 import deleteusers from "./deleteUserAction";
 import updateUserPost from "./updateuserAction";
 import updateManagersPost from "./updateManagerAction"
+import updateLogsPosts from "./updateLogAction"
 
 const allActions = {
   signup,
@@ -18,6 +19,7 @@ const allActions = {
   deleteusers,
   updateUserPost,
   updateManagersPost,
+  updateLogsPosts,
 };
 
 export default allActions;

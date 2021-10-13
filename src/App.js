@@ -11,6 +11,7 @@ import AdminDashboard from "./pages/adminDashboard";
 import ManagerDashboard from "./pages/managerDashboard";
 import UserDashboard from "./pages/userDashboard";
 import Create from "./pages/create";
+import AddRecord from "./pages/addRecord/AddRecord";
 // import ProtectedRoute from "./components/protectedRoutes";
 import ErrorPage from "./pages/errorPage/ErrorPage";
 import "./App.css";
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/admindashboard" component={AdminDashboard} />
           <Route path="/managerdashboard" component={ManagerDashboard} />
           <Route path="/userdashboard" component={UserDashboard} />
+          <Route path = "/addrecord/:id" component={AddRecord} />
           <Route path="/create/:id" component={Create} />
           <Route path="/404" component={ErrorPage} />
           <Redirect from="*" to="/404" />

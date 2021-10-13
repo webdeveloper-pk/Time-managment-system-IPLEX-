@@ -1,42 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { useHistory, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import allActions from "../../../redux/actions";
 import styles from "./UserDashboardUI.module.css";
 
 const UserDashboardUI = () => {
   const [hamburg, setHamburg] = useState(false);
-  const [logData, setLogData] = useState({
-    logDate: "",
-    hours: "",
-    description: "",
-  });
-  const [updateData, setUpdateData] = useState("");
+  // const [updateData, setUpdateData] = useState("");
+  const { push } = useHistory();
   const dispatch = useDispatch();
 
   const userslog = useSelector(
     (state) => state?.getuserlogss?.postItems?.workLogs?.data
   );
-  console.log(userslog, "logs");
-
-  const onChangeHandler = (e) => {
-    setLogData({
-      ...logData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-    dispatch(allActions.createUserData.creatework(logData));
-    setUpdateData();
-    setLogData({
-      logDate: "",
-      hours: "",
-      description: "",
-    });
-  };
 
   const clickHandler = () => {
     if (hamburg === false) {
@@ -47,9 +25,9 @@ const UserDashboardUI = () => {
   };
 
   useEffect(() => {
-    dispatch(allActions.getlogsusers.getUserLogs());
+    dispatch(allActions?.getlogsusers?.getUserLogs());
     // eslint-disable-next-line
-  }, [updateData]);
+  }, []);
 
   return (
     <div className={styles.dashboard_wrapper}>
@@ -58,6 +36,11 @@ const UserDashboardUI = () => {
           <h2>Dashboard</h2>
         </div>
         <div className={styles.menuItem_wrapper}>
+          <button>
+            <Link to="/addrecord/:id" className={styles.add_record}>
+              Add Record
+            </Link>
+          </button>
           <button className={styles.logout_btn}>
             <FontAwesomeIcon icon={faSignOutAlt} />
           </button>
@@ -91,36 +74,10 @@ const UserDashboardUI = () => {
           )}
         </div>
       </div>
-      <div className={styles.form_wrapper}>
-        <form onSubmit={onSubmitHandler}>
-          <h3>Add Record Here</h3>
-          <input
-            type="date"
-            placeholder="Add Date"
-            name="logDate"
-            value={logData.logDate}
-            onChange={onChangeHandler}
-          />
-          <input
-            type="number"
-            placeholder="Add Hours"
-            name="hours"
-            value={logData.hours}
-            onChange={onChangeHandler}
-          />
-          <input
-            type="text"
-            placeholder="Add Description"
-            name="description"
-            value={logData.description}
-            onChange={onChangeHandler}
-          />
-          <button className={styles.create_btn}>Add Record</button>
-        </form>
-      </div>
       <div className="container">
-        <div className="row justify-content-center">
+        <div className="row justify-content-center mt-5">
           <div className="col-8">
+            <h3 className="text-center mb-2">List of Records</h3>
             <table className="table">
               <thead className={styles.thead}>
                 <tr className="text-center">
@@ -139,7 +96,7 @@ const UserDashboardUI = () => {
                         <td>{data.hours}</td>
                         <td>{data.description}</td>
                         <td>
-                          <button>
+                          <button onClick={() => push(`/addrecord/${data.id}`)}>
                             <FontAwesomeIcon
                               icon={faPen}
                               className="edit_icon"
