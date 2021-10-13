@@ -1,11 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import styles from "./CreateUI.module.css";
 
 const CreateUI = ({ createData, onChangeHandler, onSubmitHandler }) => {
+console.log(createData , "createData result")
+
   return (
+
     <div className={styles.wrapper}>
       <div className={styles.login_wrapper}>
         <div className={styles.image_wrapper}>
@@ -66,34 +68,9 @@ const CreateUI = ({ createData, onChangeHandler, onSubmitHandler }) => {
                   onChange={onChangeHandler}
                   disabled
                 />
-                {/* <div className={styles.usertype_wrapper}>
-                  <p>User Type:</p>
-                  <input
-                    type="radio"
-                    id="manager"
-                    name="userType"
-                    value={createData.userType}
-                  />
-                   <label for="manager">Manager</label>
-                  <input
-                    type="radio"
-                    id="user"
-                    name="userType"
-                    value={createData.userType}
-                  />
-                  <label for="user">User</label>
-                </div> */}
                 <button className={styles.signup_button} type="submit">
                   Create
                 </button>
-                <div>
-                  <p>
-                    Back to
-                    <Link to="/dashboard" className={styles.link}>
-                      Dashboard
-                    </Link>
-                  </p>
-                </div>
               </div>
             </form>
           </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen} from "@fortawesome/free-solid-svg-icons";
+import { faPen, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import allActions from "../../../redux/actions";
 import styles from "./UserDashboardUI.module.css";
@@ -12,7 +12,7 @@ const UserDashboardUI = () => {
     hours: "",
     description: "",
   });
-
+  const [updateData, setUpdateData] = useState("");
   const dispatch = useDispatch();
 
   const userslog = useSelector(
@@ -30,6 +30,12 @@ const UserDashboardUI = () => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     dispatch(allActions.createUserData.creatework(logData));
+    setUpdateData();
+    setLogData({
+      logDate: "",
+      hours: "",
+      description: "",
+    });
   };
 
   const clickHandler = () => {
@@ -43,7 +49,7 @@ const UserDashboardUI = () => {
   useEffect(() => {
     dispatch(allActions.getlogsusers.getUserLogs());
     // eslint-disable-next-line
-  }, []);
+  }, [updateData]);
 
   return (
     <div className={styles.dashboard_wrapper}>
@@ -52,7 +58,9 @@ const UserDashboardUI = () => {
           <h2>Dashboard</h2>
         </div>
         <div className={styles.menuItem_wrapper}>
-          <button className={styles.logout_btn}>Log Out</button>
+          <button className={styles.logout_btn}>
+            <FontAwesomeIcon icon={faSignOutAlt} />
+          </button>
           <button className={styles.humberg_button} onClick={clickHandler}>
             <span
               className={

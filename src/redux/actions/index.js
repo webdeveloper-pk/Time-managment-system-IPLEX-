@@ -5,15 +5,19 @@ import getUserData from "./getUserAction"
 import createUserData from "./createUserAction";
 import getlogsusers from "./getUserLogAction";
 import deleteusers from "./deleteUserAction";
+import updateUserPost from "./updateuserAction";
+import updateManagersPost from "./updateManagerAction"
 
 const allActions = {
   signup,
   loginData,
   userDataPosts,
-  getUserData,
+  getUserData, //get data
   createUserData,
   getlogsusers,
   deleteusers,
+  updateUserPost,
+  updateManagersPost,
 };
 
 export default allActions;

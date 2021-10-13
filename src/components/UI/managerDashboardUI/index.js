@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link , useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faPen, faSignOutAlt, faTrash } from "@fortawesome/free-solid-svg-icons";
 import allActions from "../../../redux/actions";
 import styles from "./ManagerDashboardUI.module.css";
 
 const ManagerDashboardUI = () => {
   const [hamburg, setHamburg] = useState(false);
+  const [deleteData , setDeleteData] = useState([])
 
   const dispatch = useDispatch();
+
+  const { push } = useHistory();
 
   const managerUpdatedData = useSelector(
     (state) => state?.getuserposts?.postItems?.users?.data
@@ -25,11 +28,12 @@ const ManagerDashboardUI = () => {
 
   useEffect(() => {
     dispatch(allActions.getUserData.getUserPost());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); 
+    // eslint-disable-next-line 
+  }, [deleteData]); 
 
   const onDelete = (id) => {
     dispatch(allActions.deleteusers.deleteUser(id));
+    setDeleteData(id)
   }
 
   return (
@@ -44,7 +48,9 @@ const ManagerDashboardUI = () => {
               Create User
             </Link>
           </button>
-          <button className={styles.logout_btn}>Log Out</button>
+          <button className={styles.logout_btn}>
+            <FontAwesomeIcon icon={faSignOutAlt} />
+          </button>
           <button className={styles.humberg_button} onClick={clickHandler}>
             <span
               className={
@@ -106,13 +112,18 @@ const ManagerDashboardUI = () => {
                         <td>{data.lastName}</td>
                         <td>{data.email}</td>
                         <td>
-                          <button>
+                          <button onClick={() => push(`/create/${data.id}`)}>
                             <FontAwesomeIcon
                               icon={faPen}
                               className="edit_icon"
                             />
                           </button>
-                          <button onClick={()=>{onDelete(data.id)}}>
+
+                          <button
+                            onClick={() => {
+                              onDelete(data.id);
+                            }}
+                          >
                             <FontAwesomeIcon
                               icon={faTrash}
                               className="dlt_icon"

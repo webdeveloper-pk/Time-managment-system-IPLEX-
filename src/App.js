@@ -4,7 +4,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-// import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet";
 import Login from "./pages/logIn";
 import SignUp from "./pages/signUp";
 import AdminDashboard from "./pages/adminDashboard";
@@ -18,19 +18,19 @@ import "./App.css";
 const App = () => {
   return (
     <div className="App">
-      {/* <Helmet>
+      <Helmet>
         <meta charSet="utf-8" />
         <title>Time Management System</title>
         <meta name="title" content="Time Management System" />
-      </Helmet> */}
+      </Helmet>
       <Router>
         <Switch>
           <Route exact path="/" component={Login} />
-          <Route path="/signup" component={SignUp} />
+          <Route path="/signup/:id" component={SignUp} />
           <Route path="/admindashboard" component={AdminDashboard} />
           <Route path="/managerdashboard" component={ManagerDashboard} />
           <Route path="/userdashboard" component={UserDashboard} />
-          <Route path="/create" component={Create} />
+          <Route path="/create/:id" component={Create} />
           <Route path="/404" component={ErrorPage} />
           <Redirect from="*" to="/404" />
         </Switch>

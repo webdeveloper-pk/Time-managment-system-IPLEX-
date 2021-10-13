@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPen,
+  faTrash,
+  faSignOutAlt,
+} from "@fortawesome/free-solid-svg-icons";
 import allActions from "../../../redux/actions";
 import styles from "./AdminDashboardUI.module.css";
 
@@ -10,6 +14,8 @@ const AdminDashboardUI = () => {
   const [hamburg, setHamburg] = useState(false);
 
   const dispatch = useDispatch();
+
+  const { push } = useHistory();
 
   const adminUpdatedData = useSelector(
     (state) => state?.getuserposts?.postItems?.users?.data
@@ -21,13 +27,9 @@ const AdminDashboardUI = () => {
     return arr.roles[0].name === "manager";
   });
 
-  console.log(managerData, "manager Data");
-
   const userData = adminUpdatedData?.filter((arr) => {
     return arr.roles[0].name === "user";
   });
-
-  console.log(userData, "user Data");
 
   const clickHandler = () => {
     if (hamburg === false) {
@@ -43,7 +45,7 @@ const AdminDashboardUI = () => {
 
   useEffect(() => {
     dispatch(allActions.getUserData.getUserPost());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -59,11 +61,13 @@ const AdminDashboardUI = () => {
             </Link>
           </button>
           <button className={styles.create_btn}>
-            <Link to="/create" className={styles.create_manager}>
+            <Link to="/create/:id" className={styles.create_manager}>
               Create User
             </Link>
           </button>
-          <button className={styles.logout_btn}>Log Out</button>
+          <button className={styles.logout_btn}>
+            <FontAwesomeIcon icon={faSignOutAlt} />
+          </button>
           <button className={styles.humberg_button} onClick={clickHandler}>
             <span
               className={
@@ -118,7 +122,7 @@ const AdminDashboardUI = () => {
                         <td>{data.email}</td>
                         <td>{data.roles[0].name}</td>
                         <td>
-                          <button>
+                          <button onClick={() => push(`/signup/${data.id}`)}>
                             <FontAwesomeIcon
                               icon={faPen}
                               className="edit_icon"
@@ -174,7 +178,7 @@ const AdminDashboardUI = () => {
                           >View Details</Link>
                         </td> */}
                         <td>
-                          <button>
+                          <button onClick={() => push(`/create/${data.id}`)}>
                             <FontAwesomeIcon
                               icon={faPen}
                               className="edit_icon"

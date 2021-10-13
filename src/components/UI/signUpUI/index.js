@@ -1,6 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import styles from "./SignUpUI.module.css";
@@ -61,24 +59,8 @@ const SignUpUI = ({ inputData, onChangeHandler, onSubmitHandler }) => {
                 <button className={styles.signup_button} type="submit">
                   SIGN UP
                 </button>
-                <div>
-                  <p>
-                    Back to
-                    <Link to="/dashboard" className={styles.dashboard_link}>
-                      Dashboard
-                    </Link>
-                  </p>
-                </div>
               </div>
             </form>
-            {/* <div className={styles.bottom_wrapper}>
-              Already Have an Account?
-              <span>
-                <Link to="/login" className={styles.link}>
-                  Log In
-                </Link>
-              </span>
-            </div> */}
           </div>
         </div>
       </div>
