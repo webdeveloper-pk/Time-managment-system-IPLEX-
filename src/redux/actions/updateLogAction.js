@@ -1,10 +1,10 @@
 import axios from "axios";
 
 const updateLogPosts = (user, id) => async (dispatch) => {
- const logDate = user.logDate;
- const hours = user.hours;
- const description = user.description;
- console.log(hours, "hours in testing");
+  const logDate = user.logDate;
+  const hours = user.hours;
+  const description = user.description;
+  console.log(hours, "hours in testing");
 
   console.log(id, "uaction id");
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch  } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import allActions from "../../redux/actions";
 import LoginUI from "../../components/UI/loginUI";
 
@@ -11,8 +12,9 @@ const Login = () => {
   });
 
   const dispatch = useDispatch();
-  
-  // const logindata = useSelector((state) => state.loginposts);
+  const history = useHistory();
+  const loginuserrole = useSelector((state) => state.loginposts?.postItems?.user?.roles[0].name);
+  console.log(loginuserrole, "login user details");
   
   const onChangeHandler = (e) => {
     setInputData({ ...inputData, [e.target.name]: e.target.value });
@@ -20,19 +22,16 @@ const Login = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    // fetch("http://34.210.129.167/api/login", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(inputData),
-    // })
-    //   .then((response) => console.log(response , "resssss"))
-    //   .then((data) => {
-    //     alert(data.user.lastName);
-    //   });
     dispatch(allActions.loginData.fetchPost(inputData));
-    
+    if (loginuserrole === "manager") {
+      history.push("/managerdashboard")
+    }
+    else if (loginuserrole === "admin") {
+        history.push("/admindashboard");
+    }
+    else if (loginuserrole === "user") {
+      history.push("/userdashboard");
+    }
   };
 
   return (

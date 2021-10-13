@@ -39,14 +39,6 @@ const LoginUI = ({ onSubmitHandler, onChangeHandler, inputData }) => {
                 </button>
               </div>
             </form>
-            {/* <div className={styles.bottom_wrapper}>
-          Dont have an Account ?
-          <span>
-            <Link to="/signup" className={styles.link}>
-              Sign Up
-            </Link>
-          </span>
-        </div> */}
           </div>
         </div>
       </div>

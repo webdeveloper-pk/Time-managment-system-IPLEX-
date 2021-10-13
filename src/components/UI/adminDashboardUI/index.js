@@ -31,6 +31,11 @@ const AdminDashboardUI = () => {
     return arr.roles[0].name === "user";
   });
 
+   useEffect(() => {
+     dispatch(allActions.getUserData.getUserPost());
+     // eslint-disable-next-line
+   }, []);
+  
   const clickHandler = () => {
     if (hamburg === false) {
       setHamburg(true);
@@ -40,13 +45,12 @@ const AdminDashboardUI = () => {
   };
 
   const onDelete = (id) => {
-    dispatch(allActions.deleteusers.deleteUser(id));
+    dispatch(allActions?.deleteusers?.deleteUser(id));
   };
 
-  useEffect(() => {
-    dispatch(allActions.getUserData.getUserPost());
-    // eslint-disable-next-line
-  }, []);
+   const onLogout = () => {
+     localStorage.clear();
+  };
 
   return (
     <div className={styles.dashboard_wrapper}>
@@ -56,7 +60,7 @@ const AdminDashboardUI = () => {
         </div>
         <div className={styles.menuItem_wrapper}>
           <button className={styles.create_btn}>
-            <Link to="/signup" className={styles.create_manager}>
+            <Link to="/signup/:id" className={styles.create_manager}>
               Create Manager
             </Link>
           </button>
@@ -65,9 +69,11 @@ const AdminDashboardUI = () => {
               Create User
             </Link>
           </button>
-          <button className={styles.logout_btn}>
+            <Link to = "/">
+          <button className={styles.logout_btn} onClick={onLogout}>
             <FontAwesomeIcon icon={faSignOutAlt} />
-          </button>
+            </button>
+            </Link>
           <button className={styles.humberg_button} onClick={clickHandler}>
             <span
               className={

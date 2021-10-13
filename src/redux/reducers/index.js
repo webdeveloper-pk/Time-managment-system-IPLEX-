@@ -7,9 +7,10 @@ import createuserss from "./createUserReducer";
 import getuserlogss from "./getLogsReducer";
 import deleteuserposts from "./deleteUserReducer";
 import updateuserposts from "./updateUserReducer";
-import getsingleuser from "./getSingleUserReducer"
-import updatemanagerposts from "./updateMnagerReducer"
+import getsingleuser from "./getSingleUserReducer";
+import updatemanagerposts from "./updateMnagerReducer";
 import updatelogsposts from "./updateLogReducer";
+import getuserfilterlogss from "./getFilterReducer";
 
 const rootReducer = combineReducers({
   posts,
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   getsingleuser,
   updatemanagerposts,
   updatelogsposts,
+  getuserfilterlogss,
 });
 
 export default rootReducer;

@@ -32,7 +32,7 @@ const Create = () => {
         allActions?.updateUserPost?.updatePosts(createData, createData?.id)
       );
     } else {
-      dispatch(allActions.userDataPosts.userPost(createData));
+      dispatch(allActions?.userDataPosts?.userPost(createData));
     }
     setUpdateData(id);
     setCreateData({
@@ -56,7 +56,7 @@ const Create = () => {
   // }
 
   useEffect(() => {
-    const filteredData = managerUpdatedData.find(
+    const filteredData = managerUpdatedData?.find(
       (arr) => arr.id === parseInt(id)
     );
     // const filteredData = filteredUpdateData();

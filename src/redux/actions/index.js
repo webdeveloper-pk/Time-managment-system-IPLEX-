@@ -8,6 +8,7 @@ import deleteusers from "./deleteUserAction";
 import updateUserPost from "./updateuserAction";
 import updateManagersPost from "./updateManagerAction"
 import updateLogsPosts from "./updateLogAction"
+import getUsersFilterDataPost from "./getFilterAction";
 
 const allActions = {
   signup,
@@ -20,6 +21,7 @@ const allActions = {
   updateUserPost,
   updateManagersPost,
   updateLogsPosts,
+  getUsersFilterDataPost,
 };
 
 export default allActions;

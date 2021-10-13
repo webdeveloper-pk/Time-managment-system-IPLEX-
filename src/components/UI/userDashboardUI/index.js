@@ -23,11 +23,15 @@ const UserDashboardUI = () => {
       setHamburg(false);
     }
   };
-
+  
   useEffect(() => {
-    dispatch(allActions?.getlogsusers?.getUserLogs());
+    dispatch(allActions.getlogsusers.getUserLogs());
     // eslint-disable-next-line
   }, []);
+
+  const onLogout = () => {
+   localStorage.clear()
+  };
 
   return (
     <div className={styles.dashboard_wrapper}>
@@ -41,9 +45,12 @@ const UserDashboardUI = () => {
               Add Record
             </Link>
           </button>
-          <button className={styles.logout_btn}>
+           <Link to="/">
+          <button className={styles.logout_btn} onClick={onLogout}>
+           
             <FontAwesomeIcon icon={faSignOutAlt} />
           </button>
+          </Link>
           <button className={styles.humberg_button} onClick={clickHandler}>
             <span
               className={

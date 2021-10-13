@@ -47,7 +47,7 @@ const AddRecord = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    const filteredLogsData = userslog.find((arr) => arr.id === parseInt(id));
+    const filteredLogsData = userslog?.find((arr) => arr.id === parseInt(id));
     setLogData({ ...filteredLogsData });
     // eslint-disable-next-line
   }, [id]);

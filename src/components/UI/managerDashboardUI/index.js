@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link , useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faSignOutAlt, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPen,
+  faSignOutAlt,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 import allActions from "../../../redux/actions";
 import styles from "./ManagerDashboardUI.module.css";
 
 const ManagerDashboardUI = () => {
   const [hamburg, setHamburg] = useState(false);
-  const [deleteData , setDeleteData] = useState([])
+  const [deleteData, setDeleteData] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -26,15 +30,23 @@ const ManagerDashboardUI = () => {
     }
   };
 
-  useEffect(() => {
-    dispatch(allActions.getUserData.getUserPost());
-    // eslint-disable-next-line 
-  }, [deleteData]); 
+  const onLogout = () => {
+    localStorage.clear();
+  };
 
   const onDelete = (id) => {
-    dispatch(allActions.deleteusers.deleteUser(id));
-    setDeleteData(id)
+    dispatch(allActions?.deleteusers?.deleteUser(id));
+    setDeleteData(id);
+  };
+
+  const onSearch = () => {
+  // 
   }
+  
+  useEffect(() => {
+    dispatch(allActions.getUserData.getUserPost());
+    // eslint-disable-next-line
+  }, [deleteData]);
 
   return (
     <div className={styles.dashboard_wrapper}>
@@ -44,13 +56,15 @@ const ManagerDashboardUI = () => {
         </div>
         <div className={styles.menuItem_wrapper}>
           <button className={styles.create_btn}>
-            <Link to="/create" className={styles.user_link}>
+            <Link to="/create/:id" className={styles.user_link}>
               Create User
             </Link>
           </button>
-          <button className={styles.logout_btn}>
-            <FontAwesomeIcon icon={faSignOutAlt} />
-          </button>
+          <Link to="/">
+            <button className={styles.logout_btn} onClick={onLogout}>
+              <FontAwesomeIcon icon={faSignOutAlt} />
+            </button>
+          </Link>
           <button className={styles.humberg_button} onClick={clickHandler}>
             <span
               className={
@@ -81,13 +95,15 @@ const ManagerDashboardUI = () => {
           )}
         </div>
       </div>
+      <form>
       <div className={styles.filtring_wrapper}>
         <h5>From : </h5>
         <input type="date" id="startdate" name="startdate" />
         <h5>To : </h5>
         <input type="date" id="enddate" name="enddate" />
-        <button>Search</button>
-      </div>
+        <button onClick={onSearch}>Search</button>
+        </div>
+      </form>
       <div className="container">
         <div className="row justify-content-center">
           <h3 className={styles.list_heading}>Users List</h3>
