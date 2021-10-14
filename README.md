@@ -1,8 +1,21 @@
-# Getting Started with Create React App
+# Time Management System by Abdullah Rasheed (Intern at IPLEX Pvt Ltd)
+
+Description: 
+This project is about time management , There are three roles ( admin , manager and user ) .admin can CRUD on Manager and User. Manager can CRUD on User and User can CRUD only his work logs .
+
+#Credentials
+
+Manager : 
+email: abdmanager1@gmail.com
+password: Abc12345!
+
+User :
+email: abdusertest13@gmail.com
+password: Abc12345!
+
+###################################################################################################
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
 
 In the project directory, you can run:
 
