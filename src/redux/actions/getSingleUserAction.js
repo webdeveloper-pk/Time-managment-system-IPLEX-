@@ -2,7 +2,6 @@ import axios from "axios";
 
 const getSingleUserPost = (id) => async (dispatch) => {
   const userToken = localStorage.getItem("token");
-  console.log("token", userToken);
 
   dispatch(requestPosts());
   try {
@@ -14,7 +13,6 @@ const getSingleUserPost = (id) => async (dispatch) => {
       })
       .then((res) => {
         const userData = res.data;
-        console.log(res);
         dispatch({ type: "FETCH_SINGLE_USERS_SUCCESS", payload: userData });
       });
   } catch (error) {

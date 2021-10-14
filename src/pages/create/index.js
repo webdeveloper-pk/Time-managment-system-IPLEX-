@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-// import { withRouter } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import allActions from "../../redux/actions";
 import CreateUI from "../../components/UI/createUI";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 const Create = () => {
   const [createData, setCreateData] = useState({
@@ -15,8 +14,14 @@ const Create = () => {
     password_confirmation: "",
     userType: "user",
   });
+
   const [updateData, setUpdateData] = useState([]);
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  const role = useSelector(
+    (state) => state.loginposts?.postItems?.user?.roles[0].name
+  );
 
   const onChangeHandler = (e) => {
     setCreateData({
@@ -31,12 +36,31 @@ const Create = () => {
       dispatch(
         allActions?.updateUserPost?.updatePosts(createData, createData?.id)
       );
+      setCreateData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        password_confirmation: "",
+        userType: "user",
+      });
+
+      if (role === "admin") {
+        history.push("/admindashboard");
+      } else if (role === "manager") {
+        history.push("/managerdashboard");
+      }
     } else {
       dispatch(allActions?.userDataPosts?.userPost(createData));
+      if (role === "admin") {
+        history.push("/admindashboard");
+      } else if (role === "manager") {
+        history.push("/managerdashboard");
+      }
     }
+    history.goBack();
     setUpdateData(id);
     setCreateData({
-      id: "",
       firstName: "",
       lastName: "",
       email: "",
@@ -51,25 +75,12 @@ const Create = () => {
   );
 
   const { id } = useParams();
-  //   const filteredUpdateData = async() => {
-  //   return await dispatch(allActions?.getSingleDataPost?.getSingleUserPost(id));
-  // }
 
   useEffect(() => {
     const filteredData = managerUpdatedData?.find(
       (arr) => arr.id === parseInt(id)
     );
-    // const filteredData = filteredUpdateData();
-    // replace filter with get user API Method
-    setCreateData(
-      // firstName: filteredData?.firstName,
-      // lastName: filteredData?.lastName,
-      // email: filteredData?.email,
-      // password: filteredData?.password,
-      // password_confirmation: filteredData?.password_confirmation,
-      // userType: filteredData?.userType,
-      { ...filteredData }
-    );
+    setCreateData({ ...filteredData });
     // eslint-disable-next-line
   }, [id, updateData]);
 

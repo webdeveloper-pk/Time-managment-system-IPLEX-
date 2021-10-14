@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./ErrorPage.module.css";
 
 const ErrorPage = () => {
@@ -8,11 +8,11 @@ const ErrorPage = () => {
       <img src="/images/error.jpg" alt="error" />
       <div>
         <Link to="/" className={styles.link}>
-            Back to Home 
+          Back to Home
         </Link>
       </div>
     </div>
   );
-}
+};
 
 export default ErrorPage;

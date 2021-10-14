@@ -1,9 +1,8 @@
-.dashboard_wrapper{
+.dashboard_wrapper {
   max-width: 100%;
-    display: flex;
+  display: flex;
   flex-direction: column;
 }
-
 
 /* navbar */
 .navbar_wrapper {
@@ -31,11 +30,10 @@
 .menuItem_wrapper {
   display: flex;
   justify-content: flex-end;
-  /* width: 30%; */
   gap: 15px;
 }
 
-.menuItem_wrapper .create_btn{
+.menuItem_wrapper .create_btn {
   background-color: #ffffff;
   border-radius: 10px;
   padding: 6px 12px;
@@ -43,13 +41,22 @@
   color: #08546c;
 }
 
-.menuItem_wrapper .create_manager{
-text-decoration: none;
-color: #08546c;
+.absolute_wrapper .absolute_create_btn {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 6px 12px;
+  border: none;
+  color: #08546c;
+  margin-bottom: 20px;
 }
 
-.menuItem_wrapper .logout_btn{
-    background-color: rgb(190, 44, 44);
+.menuItem_wrapper .create_manager {
+  text-decoration: none;
+  color: #08546c;
+}
+
+.menuItem_wrapper .logout_btn {
+  background-color: rgb(190, 44, 44);
   border-radius: 10px;
   padding: 6px 12px;
   border: none;
@@ -136,7 +143,7 @@ color: #08546c;
   margin-bottom: 20px;
 }
 
-.thead{
+.thead {
   background-color: #08546c;
   color: #ffffff;
 }
@@ -155,14 +162,11 @@ color: #08546c;
     border: none;
   }
 
-  .menuItem_wrapper button:nth-child(1){
+  .menuItem_wrapper .create_btn {
     display: none;
   }
 
-  .menuItem_wrapper button:nth-child(2){
-    display: none;
-  }
- .menuItem_wrapper button:nth-child(3){
+  .menuItem_wrapper .logout_btn {
     display: none;
   }
 

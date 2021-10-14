@@ -1,20 +1,21 @@
-import signup from "./signUpData"
+import signup from "./signUpData";
 import loginData from "./loginData";
-import userDataPosts from "./userAction"
-import getUserData from "./getUserAction"
+import userDataPosts from "./userAction";
+import getUserData from "./getUserAction";
 import createUserData from "./createUserAction";
 import getlogsusers from "./getUserLogAction";
 import deleteusers from "./deleteUserAction";
 import updateUserPost from "./updateuserAction";
-import updateManagersPost from "./updateManagerAction"
-import updateLogsPosts from "./updateLogAction"
+import updateManagersPost from "./updateManagerAction";
+import updateLogsPosts from "./updateLogAction";
 import getUsersFilterDataPost from "./getFilterAction";
+import workHoursLogs from "./workHoursActions";
 
 const allActions = {
   signup,
   loginData,
   userDataPosts,
-  getUserData, //get data
+  getUserData,
   createUserData,
   getlogsusers,
   deleteusers,
@@ -22,6 +23,7 @@ const allActions = {
   updateManagersPost,
   updateLogsPosts,
   getUsersFilterDataPost,
+  workHoursLogs,
 };
 
 export default allActions;

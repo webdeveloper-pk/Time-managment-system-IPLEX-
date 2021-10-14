@@ -2,7 +2,6 @@ import axios from "axios";
 
 const getUserFilterPost = () => async (dispatch) => {
   const userToken = localStorage.getItem("token");
-  console.log("token", userToken);
 
   dispatch(requestPosts());
   try {
@@ -14,7 +13,6 @@ const getUserFilterPost = () => async (dispatch) => {
       })
       .then((res) => {
         const userFilterData = res.data;
-        console.log(res);
         dispatch({ type: "FETCH_USERS_SUCCESS", payload: userFilterData });
       });
   } catch (error) {

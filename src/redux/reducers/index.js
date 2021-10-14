@@ -11,6 +11,7 @@ import getsingleuser from "./getSingleUserReducer";
 import updatemanagerposts from "./updateMnagerReducer";
 import updatelogsposts from "./updateLogReducer";
 import getuserfilterlogss from "./getFilterReducer";
+import workhourslogs from "./workHoursReducer";
 
 const rootReducer = combineReducers({
   posts,
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   updatemanagerposts,
   updatelogsposts,
   getuserfilterlogss,
+  workhourslogs,
 });
 
 export default rootReducer;

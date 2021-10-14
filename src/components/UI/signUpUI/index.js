@@ -21,7 +21,7 @@ const SignUpUI = ({ inputData, onChangeHandler, onSubmitHandler }) => {
                   placeholder="First Name"
                   id="firstName"
                   name="firstName"
-                  value={inputData.firstName}
+                  value={inputData.firstName || ""}
                   onChange={onChangeHandler}
                 />
                 <input
@@ -29,7 +29,7 @@ const SignUpUI = ({ inputData, onChangeHandler, onSubmitHandler }) => {
                   placeholder="Last Name"
                   id="lastName"
                   name="lastName"
-                  value={inputData.lastName}
+                  value={inputData.lastName || ""}
                   onChange={onChangeHandler}
                 />
                 <input
@@ -37,7 +37,7 @@ const SignUpUI = ({ inputData, onChangeHandler, onSubmitHandler }) => {
                   placeholder="Email"
                   id="email"
                   name="email"
-                  value={inputData.email}
+                  value={inputData.email || ""}
                   onChange={onChangeHandler}
                 />
                 <input
@@ -45,7 +45,7 @@ const SignUpUI = ({ inputData, onChangeHandler, onSubmitHandler }) => {
                   placeholder="*******"
                   id="password"
                   name="password"
-                  value={inputData.password}
+                  value={inputData.password || ""}
                   onChange={onChangeHandler}
                 />
                 <input
@@ -53,7 +53,7 @@ const SignUpUI = ({ inputData, onChangeHandler, onSubmitHandler }) => {
                   placeholder="Confirm Password"
                   id="password_confirmation"
                   name="password_confirmation"
-                  value={inputData.password_confirmation}
+                  value={inputData.password_confirmation || ""}
                   onChange={onChangeHandler}
                 />
                 <button className={styles.signup_button} type="submit">

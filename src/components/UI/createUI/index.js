@@ -4,10 +4,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import styles from "./CreateUI.module.css";
 
 const CreateUI = ({ createData, onChangeHandler, onSubmitHandler }) => {
-console.log(createData , "createData result")
-
   return (
-
     <div className={styles.wrapper}>
       <div className={styles.login_wrapper}>
         <div className={styles.image_wrapper}>
@@ -24,7 +21,7 @@ console.log(createData , "createData result")
                   placeholder="First Name"
                   id="firstName"
                   name="firstName"
-                  value={createData.firstName}
+                  value={createData.firstName || ""}
                   onChange={onChangeHandler}
                 />
                 <input
@@ -32,7 +29,7 @@ console.log(createData , "createData result")
                   placeholder="Last Name"
                   id="lastName"
                   name="lastName"
-                  value={createData.lastName}
+                  value={createData.lastName || ""}
                   onChange={onChangeHandler}
                 />
                 <input
@@ -40,7 +37,7 @@ console.log(createData , "createData result")
                   placeholder="Email"
                   id="email"
                   name="email"
-                  value={createData.email}
+                  value={createData.email || ""}
                   onChange={onChangeHandler}
                 />
                 <input
@@ -48,7 +45,7 @@ console.log(createData , "createData result")
                   placeholder="*******"
                   id="password"
                   name="password"
-                  value={createData.password}
+                  value={createData.password || ""}
                   onChange={onChangeHandler}
                 />
                 <input
@@ -56,7 +53,7 @@ console.log(createData , "createData result")
                   placeholder="Confirm Password"
                   id="password_confirmation"
                   name="password_confirmation"
-                  value={createData.password_confirmation}
+                  value={createData.password_confirmation || ""}
                   onChange={onChangeHandler}
                 />
                 <input
@@ -64,7 +61,7 @@ console.log(createData , "createData result")
                   placeholder="userType-user"
                   id="user"
                   name="userType"
-                  value={createData.userType}
+                  value={createData.userType || ""}
                   onChange={onChangeHandler}
                   disabled
                 />

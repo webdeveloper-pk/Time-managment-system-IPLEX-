@@ -68,9 +68,9 @@
 }
 
 .inner_form_wrapper .link {
-text-decoration: none;
-color: #3a6e80;
-margin-top: 10px;
+  text-decoration: none;
+  color: #3a6e80;
+  margin-top: 10px;
 }
 
 .signup_button {
@@ -97,7 +97,7 @@ margin-top: 10px;
   color: #7e8ba3;
 }
 
-.inner_form_wrapper .usertype_wrapper{
+.inner_form_wrapper .usertype_wrapper {
   display: flex;
   justify-content: flex-start;
   align-items: baseline;

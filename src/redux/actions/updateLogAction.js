@@ -4,13 +4,8 @@ const updateLogPosts = (user, id) => async (dispatch) => {
   const logDate = user.logDate;
   const hours = user.hours;
   const description = user.description;
-  console.log(hours, "hours in testing");
-
-  console.log(id, "uaction id");
 
   const userToken = localStorage.getItem("token");
-  console.log("user token", userToken);
-
   dispatch(requestPosts());
   try {
     await axios

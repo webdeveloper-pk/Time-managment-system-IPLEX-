@@ -19,8 +19,8 @@
 }
 
 .error_page .link {
-   background-image: linear-gradient(to right,#d0e9ee , #0b85bc);
-   color: #000;
+  background-image: linear-gradient(to right, #d0e9ee, #0b85bc);
+  color: #000;
   margin-top: 20px;
   padding: 10px 30px;
   font-weight: 700;

@@ -1,24 +1,24 @@
 const initialState = {
-  logItems: [],
+  postItems: [],
   loading: false,
   error: null,
 };
 
-const getuserfilterlogss = (state = initialState, action) => {
+const workhourslogs = (state = initialState, action) => {
   switch (action.type) {
-    case "FETCH_LOGS_REQUEST":
+    case "WORK_HOURS_REQUEST":
       return {
         ...state,
         loading: true,
         error: null,
       };
-    case "FETCH_LOGS_SUCCESS":
+    case "WORK_HOURS_SUCCESS":
       return {
         ...state,
         loading: false,
         postItems: action.payload,
       };
-    case "FETCH_LOGS_FAILURE":
+    case "WORK_HOURS_FAILURE":
       return {
         ...state,
         loading: false,
@@ -29,4 +29,4 @@ const getuserfilterlogss = (state = initialState, action) => {
   }
 };
 
-export default getuserfilterlogss;
+export default workhourslogs;

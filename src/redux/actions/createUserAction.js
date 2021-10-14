@@ -4,11 +4,8 @@ const creatework = (user) => async (dispatch) => {
   const logDate = user.logDate;
   const hours = user.hours;
   const description = user.description;
-  console.log(hours, "hours in testing");
 
   const userToken = localStorage.getItem("token");
-  console.log("creating log token", userToken);
-
   dispatch(requestPosts());
   try {
     await axios

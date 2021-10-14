@@ -8,13 +8,25 @@ import styles from "./UserDashboardUI.module.css";
 
 const UserDashboardUI = () => {
   const [hamburg, setHamburg] = useState(false);
-  // const [updateData, setUpdateData] = useState("");
+  const [hoursInputData, setHoursInputData] = useState(8);
+
   const { push } = useHistory();
   const dispatch = useDispatch();
 
   const userslog = useSelector(
     (state) => state?.getuserlogss?.postItems?.workLogs?.data
   );
+
+  const loginId = useSelector((state) => state.loginposts?.postItems?.user?.id);
+
+  const onChangeHours = (e) => {
+    setHoursInputData(e.target.value);
+  };
+
+  const onSubmitHours = (e) => {
+    e.preventDefault();
+    dispatch(allActions?.workHoursLogs?.workHours(hoursInputData, loginId));
+  };
 
   const clickHandler = () => {
     if (hamburg === false) {
@@ -23,15 +35,15 @@ const UserDashboardUI = () => {
       setHamburg(false);
     }
   };
-  
+
+  const onLogout = () => {
+    localStorage.clear();
+  };
+
   useEffect(() => {
     dispatch(allActions.getlogsusers.getUserLogs());
     // eslint-disable-next-line
-  }, []);
-
-  const onLogout = () => {
-   localStorage.clear()
-  };
+  }, [hoursInputData]);
 
   return (
     <div className={styles.dashboard_wrapper}>
@@ -40,16 +52,15 @@ const UserDashboardUI = () => {
           <h2>Dashboard</h2>
         </div>
         <div className={styles.menuItem_wrapper}>
-          <button>
+          <button className={styles.create_btn}>
             <Link to="/addrecord/:id" className={styles.add_record}>
               Add Record
             </Link>
           </button>
-           <Link to="/">
-          <button className={styles.logout_btn} onClick={onLogout}>
-           
-            <FontAwesomeIcon icon={faSignOutAlt} />
-          </button>
+          <Link to="/">
+            <button className={styles.logout_btn} onClick={onLogout}>
+              <FontAwesomeIcon icon={faSignOutAlt} />
+            </button>
           </Link>
           <button className={styles.humberg_button} onClick={clickHandler}>
             <span
@@ -73,7 +84,19 @@ const UserDashboardUI = () => {
           {hamburg === true ? (
             <div className={styles.absolute_wrapper}>
               <div className={styles.absolute_wrapper_items}>
-                <p>Dashboard</p>
+                <button className={styles.absolute_create_btn}>
+                  <Link to="/addrecord/:id" className={styles.add_record}>
+                    Add Record
+                  </Link>
+                </button>
+                <Link to="/">
+                  <button
+                    className={styles.absolute_logout_btn}
+                    onClick={onLogout}
+                  >
+                    <FontAwesomeIcon icon={faSignOutAlt} />
+                  </button>
+                </Link>
               </div>
             </div>
           ) : (
@@ -83,41 +106,64 @@ const UserDashboardUI = () => {
       </div>
       <div className="container">
         <div className="row justify-content-center mt-5">
-          <div className="col-8">
-            <h3 className="text-center mb-2">List of Records</h3>
-            <table className="table">
-              <thead className={styles.thead}>
-                <tr className="text-center">
-                  <th scope="col">Log Date</th>
-                  <th scope="col">Hours</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {userslog?.length ? (
-                  userslog.map((data) => {
-                    return (
-                      <tr key={data.id}>
-                        <td>{data.log_date}</td>
-                        <td>{data.hours}</td>
-                        <td>{data.description}</td>
-                        <td>
-                          <button onClick={() => push(`/addrecord/${data.id}`)}>
-                            <FontAwesomeIcon
-                              icon={faPen}
-                              className="edit_icon"
-                            />
-                          </button>
-                        </td>
-                      </tr>
-                    );
-                  })
-                ) : (
-                  <h3>Loading</h3>
-                )}
-              </tbody>
-            </table>
+          <div className="col-10">
+            <div>
+              <form onSubmit={onSubmitHours} className={styles.setting_wrapper}>
+                <input
+                  type="number"
+                  name="workingHours"
+                  value={hoursInputData}
+                  onChange={onChangeHours}
+                />
+                <button className={styles.hours_btn}>Set Prefered Hours</button>
+              </form>
+            </div>
+            <h3 className="text-center m-4">List of Records</h3>
+            <div className="table-responsive">
+              <table className="table">
+                <thead className={styles.thead}>
+                  <tr className="text-center">
+                    <th scope="col">Log Date</th>
+                    <th scope="col">Hours</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {userslog?.length ? (
+                    userslog.map((data) => {
+                      return (
+                        <tr
+                          key={data.id}
+                          style={{
+                            backgroundColor:
+                              data.hours >= hoursInputData ? "green" : "red",
+                          }}
+                        >
+                          <td>{data.log_date}</td>
+                          <td>{data.hours}</td>
+                          <td>{data.description}</td>
+                          <td>
+                            <button
+                              onClick={() => push(`/addrecord/${data.id}`)}
+                            >
+                              <FontAwesomeIcon
+                                icon={faPen}
+                                className="edit_icon"
+                              />
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })
+                  ) : (
+                    <tr>
+                      <td>Loading</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

@@ -7,10 +7,7 @@ const updateManagerPosts = (user, id) => async (dispatch) => {
   const password = user.password;
   const password_confirmation = user.password_confirmation;
 
-  console.log(id, "uaction id");
-
   const userToken = localStorage.getItem("token");
-  console.log("user token", userToken);
 
   dispatch(requestPosts());
   try {
@@ -32,8 +29,10 @@ const updateManagerPosts = (user, id) => async (dispatch) => {
       )
       .then((res) => {
         const updatemanagerData = res.data;
-        console.log(res);
-        dispatch({ type: "UPDATE_MANAGER_SUCCESS", payload: updatemanagerData });
+        dispatch({
+          type: "UPDATE_MANAGER_SUCCESS",
+          payload: updatemanagerData,
+        });
       });
   } catch (error) {
     dispatch({ type: "UPDATE_MANAGER_FAILURE", payload: error });

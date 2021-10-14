@@ -1,10 +1,7 @@
 import axios from "axios";
 
-const getUserLogs = (user) => async (dispatch) => {
-
+const getUserLogs = () => async (dispatch) => {
   const userToken = localStorage.getItem("token");
-  console.log("user log token", userToken);
-
   dispatch(requestPosts());
   try {
     await axios
@@ -15,7 +12,6 @@ const getUserLogs = (user) => async (dispatch) => {
       })
       .then((res) => {
         const userLogss = res.data;
-        console.log(res);
         dispatch({ type: "FETCH_LOGS_SUCCESS", payload: userLogss });
       });
   } catch (error) {

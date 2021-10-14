@@ -1,6 +1,6 @@
-import React, { useState , useEffect } from "react";
-import { useDispatch , useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams, useHistory } from "react-router-dom";
 import allActions from "../../redux/actions";
 import SignUpUI from "../../components/UI/signUpUI";
 
@@ -15,20 +15,21 @@ const SignUp = () => {
   });
 
   const [updateData, setUpdateData] = useState([]);
-
   const dispatch = useDispatch();
-
+  const history = useHistory();
   const { id } = useParams();
 
   const adminUpdatedData = useSelector(
     (state) => state?.getuserposts?.postItems?.users?.data
   );
 
+  const role = useSelector(
+    (state) => state.loginposts?.postItems?.user?.roles[0].name
+  );
+
   const managerData = adminUpdatedData?.filter((arr) => {
     return arr.roles[0].name === "manager";
   });
-
-  console.log(managerData , "data")
 
   const onChangeHandler = (e) => {
     setInputData({
@@ -41,10 +42,21 @@ const SignUp = () => {
     e.preventDefault();
     if (inputData?.id) {
       dispatch(
-        allActions?.updateManagersPost?.updateManagerPosts(inputData, inputData?.id)
+        allActions?.updateManagersPost?.updateManagerPosts(
+          inputData,
+          inputData?.id
+        )
       );
+      if (role === "admin") {
+        history.push("/admindashboard");
+      }
     } else {
       dispatch(allActions.signup.signupManager(inputData));
+      if (role === "admin") {
+        history.push("/admindashboard");
+      } else if (role === "manager") {
+        history.push("/managerdashboard");
+      }
     }
     setUpdateData(id);
     setInputData({
@@ -57,9 +69,6 @@ const SignUp = () => {
   };
 
   useEffect(() => {
-
-console.log(id , "params")
-
     const filteredManagerData = managerData?.find(
       (arr) => arr.id === parseInt(id)
     );

@@ -9,14 +9,18 @@ const signupManager = (user) => async (dispatch) => {
 
   dispatch(requestPosts());
   try {
-    const response = await axios.post("http://34.210.129.167/api/register", {
-      firstName, lastName, email, password, password_confirmation
-    }).then((res) => {
-    const signupData = res.data;
-      dispatch({ type: "FETCH_SIGNUP_SUCCESS", payload: signupData });
-      console.log(response);
-    });
-
+    await axios
+      .post("http://34.210.129.167/api/register", {
+        firstName,
+        lastName,
+        email,
+        password,
+        password_confirmation,
+      })
+      .then((res) => {
+        const signupData = res.data;
+        dispatch({ type: "FETCH_SIGNUP_SUCCESS", payload: signupData });
+      });
   } catch (error) {
     dispatch({ type: "FETCH_SIGNUP_FAILURE", payload: error });
   }
@@ -28,7 +32,7 @@ const requestPosts = () => {
   };
 };
 
-const exportObject =  {
+const exportObject = {
   signupManager,
   requestPosts,
 };

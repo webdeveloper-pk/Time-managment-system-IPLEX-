@@ -1,18 +1,19 @@
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import allActions from "../../redux/actions";
 import styles from "./AddRecord.module.css";
 
 const AddRecord = () => {
   const [logData, setLogData] = useState({
-    id:"",
+    id: "",
     logDate: "",
     hours: "",
     description: "",
   });
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const userslog = useSelector(
     (state) => state?.getuserlogss?.postItems?.workLogs?.data
@@ -31,9 +32,7 @@ const AddRecord = () => {
       dispatch(
         allActions?.updateLogsPosts?.updateLogPosts(logData, logData?.id)
       );
-    }
-
-    else {
+    } else {
       dispatch(allActions?.createUserData?.creatework(logData));
     }
     // setUpdateData();
@@ -42,6 +41,7 @@ const AddRecord = () => {
       hours: "",
       description: "",
     });
+    history.push("/userdashboard");
   };
 
   const { id } = useParams();
@@ -61,21 +61,21 @@ const AddRecord = () => {
             type="date"
             placeholder="Add Date"
             name="logDate"
-            value={logData.logDate}
+            value={logData.logDate || ""}
             onChange={onChangeHandler}
           />
           <input
             type="number"
             placeholder="Add Hours"
             name="hours"
-            value={logData.hours}
+            value={logData.hours || ""}
             onChange={onChangeHandler}
           />
           <input
             type="text"
             placeholder="Add Description"
             name="description"
-            value={logData.description}
+            value={logData.description || ""}
             onChange={onChangeHandler}
           />
           <button className={styles.create_btn}>Add Record</button>

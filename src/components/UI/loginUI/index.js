@@ -2,7 +2,6 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import styles from "./LoginUI.module.css";
-// import { Link } from "react-router-dom";
 
 const LoginUI = ({ onSubmitHandler, onChangeHandler, inputData }) => {
   return (
@@ -22,7 +21,7 @@ const LoginUI = ({ onSubmitHandler, onChangeHandler, inputData }) => {
                   placeholder="Email"
                   id="email"
                   name="email"
-                  value={inputData.email}
+                  value={inputData.email || ""}
                   onChange={onChangeHandler}
                 />
 
@@ -31,7 +30,7 @@ const LoginUI = ({ onSubmitHandler, onChangeHandler, inputData }) => {
                   placeholder="*******"
                   id="password"
                   name="password"
-                  value={inputData.password}
+                  value={inputData.password || ""}
                   onChange={onChangeHandler}
                 />
                 <button className={styles.login_button} type="submit">

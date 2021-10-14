@@ -5,7 +5,6 @@ import allActions from "../../redux/actions";
 import LoginUI from "../../components/UI/loginUI";
 
 const Login = () => {
-
   const [inputData, setInputData] = useState({
     email: "",
     password: "",
@@ -13,9 +12,11 @@ const Login = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
-  const loginuserrole = useSelector((state) => state.loginposts?.postItems?.user?.roles[0].name);
-  console.log(loginuserrole, "login user details");
-  
+
+  const loginuserrole = useSelector(
+    (state) => state.loginposts?.postItems?.user?.roles[0].name
+  );
+
   const onChangeHandler = (e) => {
     setInputData({ ...inputData, [e.target.name]: e.target.value });
   };
@@ -23,13 +24,12 @@ const Login = () => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     dispatch(allActions.loginData.fetchPost(inputData));
-    if (loginuserrole === "manager") {
-      history.push("/managerdashboard")
-    }
-    else if (loginuserrole === "admin") {
-        history.push("/admindashboard");
-    }
-    else if (loginuserrole === "user") {
+
+    if (loginuserrole === "admin") {
+      history.push("/admindashboard");
+    } else if (loginuserrole === "manager") {
+      history.push("/managerdashboard");
+    } else if (loginuserrole === "user") {
       history.push("/userdashboard");
     }
   };

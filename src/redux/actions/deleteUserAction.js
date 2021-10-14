@@ -3,7 +3,6 @@ import axios from "axios";
 const deleteUser = (id) => async (dispatch) => {
   // getting token from login
   const userToken = localStorage.getItem("token");
-  console.log("token", userToken);
   dispatch(requestPosts());
   try {
     await axios
@@ -14,7 +13,6 @@ const deleteUser = (id) => async (dispatch) => {
       })
       .then((res) => {
         const deleteData = res.data;
-        console.log(res);
         dispatch({ type: "DELETE_USERS_SUCCESS", payload: deleteData });
       });
   } catch (error) {

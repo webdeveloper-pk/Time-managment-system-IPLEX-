@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const updatePosts = (user , id) => async (dispatch) => {
-
+const updatePosts = (user, id) => async (dispatch) => {
   const firstName = user.firstName;
   const lastName = user.lastName;
   const email = user.email;
@@ -9,11 +8,7 @@ const updatePosts = (user , id) => async (dispatch) => {
   const password_confirmation = user.password_confirmation;
   const userType = user.userType;
 
-  console.log(id , "uaction id")
-
   const userToken = localStorage.getItem("token");
-  console.log("user token", userToken);
-
   dispatch(requestPosts());
   try {
     await axios
@@ -35,7 +30,6 @@ const updatePosts = (user , id) => async (dispatch) => {
       )
       .then((res) => {
         const updateuserData = res.data;
-        console.log(res);
         dispatch({ type: "UPDATE_USER_SUCCESS", payload: updateuserData });
       });
   } catch (error) {
