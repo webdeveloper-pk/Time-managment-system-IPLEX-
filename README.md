@@ -1,9 +1,20 @@
-# Time Management System by Abdullah Rasheed (Intern at IPLEX Pvt Ltd)
+# Time Management System by Abdullah Rasheed
 
-Description: 
-This project is about time management , There are three roles ( admin , manager and user ) .admin can CRUD on Manager and User. Manager can CRUD on User and User can CRUD only his work logs .
+# Description: 
+it is about using the amount of time allocated to a project wisely in order to meet scheduled deliverables and conclude all work by or before the project completion date.
+Admin Actions: CRUD Managers and Users. 
+Manager Actions: CRUD Users
+Regular Users Actions: CRUD Logs
 
-#Credentials
+# Tools : 
+
+React | Redux | Thunk | Axios | Bootstrap | Router
+
+# Credentials
+
+Admin : 
+email: admin@iplex.com
+password: Admin#123
 
 Manager : 
 email: abdmanager1@gmail.com
